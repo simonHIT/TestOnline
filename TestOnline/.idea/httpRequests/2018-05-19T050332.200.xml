@@ -1,0 +1,23 @@
+<Result>
+    <status>
+        <code>0</code>
+    </status>
+    <dataList>
+        <dataList>
+            <courseId>6</courseId>
+            <courseName>dwadaw</courseName>
+            <userId>2</userId>
+            <courseTag>计算机</courseTag>
+            <courseImg>a4aa2573.jpg</courseImg>
+            <courseInfo>asdaw</courseInfo>
+        </dataList>
+        <dataList>
+            <courseId>7</courseId>
+            <courseName>计算机网络</courseName>
+            <userId>3</userId>
+            <courseTag>计算机</courseTag>
+            <courseImg>58eb509e.png</courseImg>
+            <courseInfo>学习计算机网络 自下而上</courseInfo>
+        </dataList>
+    </dataList>
+</Result>

@@ -1,0 +1,174 @@
+.add_choiceque_area{
+	width: 100%;
+	border-top:1px solid #CCC;
+	border-bottom:1px solid #CCC;
+}
+.add_answerque_area{
+	width: 100%;
+	height: auto;
+	border-top:1px solid #CCC;
+	border-bottom:1px solid #CCC;
+}
+
+.line1{
+	width: auto;
+	height: auto;
+	margin: 15px 30px;
+}
+
+.input_info{
+	display:inline-block;
+	width: 200px;
+	height: 30px;
+	border-style: solid;
+	border-width: 1px;
+	border-color:darkgray;
+	border-radius: 2px;
+	border-top:1px solid #CCC;
+	border-bottom:1px solid #CCC;
+}
+
+.label1{
+	display: inline-block;
+	width:60px;
+	color: darkgray;
+	font-size: 20px;
+	margin: auto 20px;
+}
+
+
+.select1{
+	width: 200px;
+	height: 30px;
+	border-color: gainsboro;
+	border-radius: 5px;
+}
+
+.submit_btn{
+	background-color: #FFA500; /* Orange */
+	border-style: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    float: right;
+    cursor: pointer;
+    /*阴影*/
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.add_btn{
+	
+	width: 50px;
+	height: 50px;
+	margin: 10px auto;
+}
+
+
+
+/*SetQuestion2*/
+.container #course .info_nav .add_answerque_area p{
+	font-size: 18px;
+	margin: 15px 50px;
+}
+.container #course .info_nav .add_answerque_area #model_answer{
+	width: 600px;
+	height: 180px;
+	margin: 15px 50px;
+	overflow: hidden;
+	border-radius: 4px;
+}
+
+.addbtn3{
+	background: url(../../../../../target/TestOnline/static/images/add.jpg);
+	width: 100px;
+	height: 100px;
+}
+
+.addbtn{
+	background: #CCC;
+    width: 50px;
+    height: 50px;
+    margin-left: 45%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.addQuestionsLayer{
+	height: 40px;
+    border-bottom: 1px #ccc solid;
+    margin-bottom: 5px;
+}
+
+.mBox{
+	background: #FFF;
+	display: none;
+	height: 400px;
+	text-align: center;
+}
+
+.mBox2{
+	display: none;
+}
+
+.mBox ._left{
+	float: left;
+	width: 50%;
+	height: 45%;
+	display: block;
+	
+}
+
+.mBox .__right{
+	display: block;
+	height: 45%;
+	width: 50%;
+}
+
+.box_title{
+	text-align: center;
+	margin: 10px 20px ; 
+	padding: 5px 10px;
+}
+#queInfo{
+	display: inline-block;
+    width: 200px;
+    height: 30px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: darkgray;
+    border-radius: 2px;
+    border-top: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+}
+
+#queInfo2{
+	display: inline-block;
+    width: 200px;
+    height: 30px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: darkgray;
+    border-radius: 2px;
+    border-top: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+}
+
+.box_main{
+	min-height: 205px;
+	margin-top: 30px;
+	text-align: center;
+}
+
+.queOption{
+	width: 29%;
+}
+
+.courseImg{
+	height: 80%;
+	margin: 20px;
+	background: url(../../static/1.jpg);
+	background-size: 100%;
+}

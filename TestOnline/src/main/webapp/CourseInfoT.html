@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="static/css/init.css"/>
+		<link rel="stylesheet" href="static/css/common3.css" />
+		<link rel="stylesheet" href="static/css/courseInfo.css" />
+		<script type="text/javascript" src="static/lib/jQuery/3.2.1/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="static/js/CourseInfoT.js" ></script>
+		<script type="text/javascript" src="static/lib/layer/layer.js" ></script>
+		<script type="text/javascript" src="static/js/common.js" ></script>
+	</head>
+	<body>
+		<div class="container">
+			<!--导航div-->
+			<div class="nav_box">
+				<div class="nav_tit">
+					<p>优学网</p>
+					<div id="person_block">
+						
+						<div class="_userLoged">个人中心</div>
+						<div class="sets" style="display: none;">
+							<ul class="set">
+								<div class="e-hover-arrow"></div>
+								<div class="hover-arrow-border"></div>
+								<li><a id="_myCourse" class="f-fc6 f-fc7" href="#" target="_blank">管理课程</a></li>
+								<li><a id="myCourse" class="f-fc6" href="#" target="_blank">我的课程</a></li>
+								<li><a id="myInfo" class="f-fc6" href="ChangeUserInfo.html" target="_blank">设置</a></li>
+								<li><a class="f-fc6 f-logout" target="_blank" onclick="logout()">退出</a></li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+					
+			</div>
+			
+			<div id="course_nav">
+				<!--
+                	模拟垂直分割线
+                -->
+				<div style="width:19%;border-right:1px solid darkgray;float:left;height:100%;"></div>
+				<label id="_courseName" style="position: absolute;left: 210px;">课程名称</label>
+			</div>
+			
+			
+			<div id="course">
+				<!--
+					左侧导航列表部分
+                -->
+				<div class="option_list">
+					<ul>
+						<li style="width: 100%;height: 120px;">
+							<div class="courseImg" ></div>
+						</li>
+						<!--<li class="li_block">
+							<a href="AddQuestion.html">题目入库</a>
+						</li>-->
+						<li class="li_block">
+							<a href="AddCourseResource.html">课件</a>
+						</li>
+						<li class="li_block">
+							<a href="TeacherForTest.html">测试与作业</a>
+						</li>
+						<li class="li_block">
+							<a href="ViewScore.html">学生试卷</a>
+						</li>
+						<li class="li_block">
+							<a href="ViewScore2.html">评卷</a>
+						</li>
+					</ul>
+				</div>
+				
+				
+				<!--
+					右侧内容部分
+                -->
+				<div class="info_nav">
+					<div class="text_area">
+						<p style="font-size: 26px;">公告</p>
+					</div>
+						<hr class="hr_line">
+					<div class="text_area" id="m_courseInfo">
+						<!--<p>		杰瑞·罗宾逊说，他想创造一个可以挑战蝙蝠侠的超级极端的恶棍，
+							但不是设计成一个典型的地头蛇或流氓那样。他想要一个有着异国情调，
+							一个作为蝙蝠侠持续不断的冲突来源（类似于夏洛克·福尔摩斯和莫里亚
+							蒂教授之间的关系），一个恶魔般的邪恶而同时滑稽的小人。“小丑”这个
+							名字率先被罗宾逊构思出来，而形象则是从他手边的一副扑克牌得来的。他
+							认为，有些角色是由矛盾构成的，而矛盾直接导致了小丑的幽默感。很快，他
+							设计出了那张经典的小丑头像扑克牌作为小丑的概念图。比尔·芬格看后认为，仅仅
+							让小丑拥有反常的思维，这个的形象是不够完整的。芬格参考了康拉德·维德在1928
+							年电影《笑面人》中的剧照，完善小丑的外貌，赋予了小丑可怕的笑容。后来，罗宾逊
+							表示，自己完成了小丑概念的构思；比尔·芬格完善了小丑形象，并写出小丑登场的第一
+							个剧本；鲍勃·凯恩与自己一同完成了作画，三人是小丑的共同创造者。</p>-->
+					</div>
+					
+						<hr class="hr_line">
+					<div class="text_area">
+						<!--<p>		小丑的真名到底是什么？在很多蝙蝠侠的故事中有着很小的线索。有一种源自小丑一
+							个亲戚的说法，小丑应该叫杰克（Jack）。不过在小丑自己看来，他更愿意称呼自己
+							为“Joseph Kerr aka Joe Kerr”（约瑟夫·克尔，简称乔·克尔）。在这里小丑名字
+							的原文Joker事实上就是“乔·克尔”的连读“乔克”。</p>-->
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>

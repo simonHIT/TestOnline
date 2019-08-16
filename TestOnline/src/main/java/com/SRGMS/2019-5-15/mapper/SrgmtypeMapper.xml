@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.SRGMS.dao.SrgmtypeMapper">
+  <resultMap id="BaseResultMap" type="com.SRGMS.model.Srgmtype">
+    <id column="SRGMTypeId" jdbcType="INTEGER" property="srgmtypeid" />
+    <result column="SRGMTypeName" jdbcType="VARCHAR" property="srgmtypename" />
+    <result column="Appearence" jdbcType="VARCHAR" property="appearence" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    SRGMTypeId, SRGMTypeName, Appearence
+  </sql>
+  <select id="selectByExample" parameterType="com.SRGMS.model.SrgmtypeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from srgmtype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from srgmtype
+    where SRGMTypeId = #{srgmtypeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from srgmtype
+    where SRGMTypeId = #{srgmtypeid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.SRGMS.model.SrgmtypeExample">
+    delete from srgmtype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.SRGMS.model.Srgmtype">
+    insert into srgmtype (SRGMTypeId, SRGMTypeName, Appearence
+      )
+    values (#{srgmtypeid,jdbcType=INTEGER}, #{srgmtypename,jdbcType=VARCHAR}, #{appearence,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.SRGMS.model.Srgmtype">
+    insert into srgmtype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="srgmtypeid != null">
+        SRGMTypeId,
+      </if>
+      <if test="srgmtypename != null">
+        SRGMTypeName,
+      </if>
+      <if test="appearence != null">
+        Appearence,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="srgmtypeid != null">
+        #{srgmtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="srgmtypename != null">
+        #{srgmtypename,jdbcType=VARCHAR},
+      </if>
+      <if test="appearence != null">
+        #{appearence,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.SRGMS.model.SrgmtypeExample" resultType="java.lang.Long">
+    select count(*) from srgmtype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update srgmtype
+    <set>
+      <if test="record.srgmtypeid != null">
+        SRGMTypeId = #{record.srgmtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.srgmtypename != null">
+        SRGMTypeName = #{record.srgmtypename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appearence != null">
+        Appearence = #{record.appearence,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update srgmtype
+    set SRGMTypeId = #{record.srgmtypeid,jdbcType=INTEGER},
+      SRGMTypeName = #{record.srgmtypename,jdbcType=VARCHAR},
+      Appearence = #{record.appearence,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.SRGMS.model.Srgmtype">
+    update srgmtype
+    <set>
+      <if test="srgmtypename != null">
+        SRGMTypeName = #{srgmtypename,jdbcType=VARCHAR},
+      </if>
+      <if test="appearence != null">
+        Appearence = #{appearence,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SRGMTypeId = #{srgmtypeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.SRGMS.model.Srgmtype">
+    update srgmtype
+    set SRGMTypeName = #{srgmtypename,jdbcType=VARCHAR},
+      Appearence = #{appearence,jdbcType=VARCHAR}
+    where SRGMTypeId = #{srgmtypeid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.SRGMS.model.Srgmtype">
+    <id column="SRGMTypeId" jdbcType="INTEGER" property="srgmtypeid" />
+    <result column="SRGMTypeName" jdbcType="VARCHAR" property="srgmtypename" />
+    <result column="Appearence" jdbcType="VARCHAR" property="appearence" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    SRGMTypeId, SRGMTypeName, Appearence
+  </sql>
+  <select id="selectByExample" parameterType="com.SRGMS.model.SrgmtypeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from srgmtype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from srgmtype
+    where SRGMTypeId = #{srgmtypeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from srgmtype
+    where SRGMTypeId = #{srgmtypeid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.SRGMS.model.SrgmtypeExample">
+    delete from srgmtype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.SRGMS.model.Srgmtype">
+    insert into srgmtype (SRGMTypeId, SRGMTypeName, Appearence
+      )
+    values (#{srgmtypeid,jdbcType=INTEGER}, #{srgmtypename,jdbcType=VARCHAR}, #{appearence,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.SRGMS.model.Srgmtype">
+    insert into srgmtype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="srgmtypeid != null">
+        SRGMTypeId,
+      </if>
+      <if test="srgmtypename != null">
+        SRGMTypeName,
+      </if>
+      <if test="appearence != null">
+        Appearence,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="srgmtypeid != null">
+        #{srgmtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="srgmtypename != null">
+        #{srgmtypename,jdbcType=VARCHAR},
+      </if>
+      <if test="appearence != null">
+        #{appearence,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.SRGMS.model.SrgmtypeExample" resultType="java.lang.Long">
+    select count(*) from srgmtype
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update srgmtype
+    <set>
+      <if test="record.srgmtypeid != null">
+        SRGMTypeId = #{record.srgmtypeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.srgmtypename != null">
+        SRGMTypeName = #{record.srgmtypename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appearence != null">
+        Appearence = #{record.appearence,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update srgmtype
+    set SRGMTypeId = #{record.srgmtypeid,jdbcType=INTEGER},
+      SRGMTypeName = #{record.srgmtypename,jdbcType=VARCHAR},
+      Appearence = #{record.appearence,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.SRGMS.model.Srgmtype">
+    update srgmtype
+    <set>
+      <if test="srgmtypename != null">
+        SRGMTypeName = #{srgmtypename,jdbcType=VARCHAR},
+      </if>
+      <if test="appearence != null">
+        Appearence = #{appearence,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SRGMTypeId = #{srgmtypeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.SRGMS.model.Srgmtype">
+    update srgmtype
+    set SRGMTypeName = #{srgmtypename,jdbcType=VARCHAR},
+      Appearence = #{appearence,jdbcType=VARCHAR}
+    where SRGMTypeId = #{srgmtypeid,jdbcType=INTEGER}
+  </update>
+</mapper>

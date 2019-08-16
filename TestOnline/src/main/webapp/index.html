@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+ 
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="static/css/courseInfo.css" />
+		<script type="text/javascript" src="static/lib/jQuery/3.2.1/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="static/wangEditor-3.1.1/release/wangEditor.min.js" ></script>
+		<script type="text/javascript" src="static/lib/layer/layer.js" ></script>
+    <title>pro.html</title>
+    <style type="text/css">
+    </style>
+    <script>
+	        $(function (){
+		    var E = window.wangEditor
+		    var editor = new E('#divDemo')
+		    editor.customConfig.uploadImgShowBase64 = true
+		    editor.create()
+		});
+    </script>
+</head>
+ 
+<body>
+    <div id="divDemo"></div>
+</body>
+ 
+</html>

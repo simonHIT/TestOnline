@@ -1,0 +1,64 @@
+.left_image{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	float: left;
+	width: 30%;
+	height: 100%;
+	float:left;
+	background: url(../images/register.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size:cover;
+}
+.right_register_area{
+	width: 60%;
+	float: right;
+}
+.right_register_area .line_block{
+	width: auto;
+	height: auto;
+	margin: 40px auto;
+}
+.right_register_area .input_text{
+	width:480px;
+	height:48px;
+	display: inline-block;
+	padding:1px 30px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: darkgray;
+	border-radius: 4px;
+	font-size: 17px;
+	
+}
+.right_register_area .input_text:hover{
+	border-color: black;
+}
+.right_register_area #regis_btn{
+	width:540px;
+	height:45px;
+	margin: 15px auto;
+	background-color: dodgerblue; /* Orange */
+	border-style: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    cursor: pointer;
+    /*阴影*/
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.right_register_area #regis_btn:hover{
+	background-color: blue;
+}
+#wel_p{
+	margin: 60px auto;
+	font-size: 50px;
+}
+
+#tip_p{
+	color: lightgray;
+}

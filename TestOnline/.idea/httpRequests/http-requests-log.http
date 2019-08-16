@@ -1,0 +1,396 @@
+GET http://localhost:8080/TestOnline/course/getbyType?type=计算机
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-19T050332.200.xml
+
+###
+
+POST http://localhost:8080/TestOnline/course/getbyType?type=计算机
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-19T050326.405.html
+
+###
+
+POST http://localhost:8080/TestOnline/source/add?courseId=1&resourcesName=1&resources=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-17T030149.200.xml
+
+###
+
+POST http://localhost:8080/TestOnline/source/add?courseId=1&resourcesName=1&resources=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-17T025743.500.html
+
+###
+
+POST http://localhost:8080/TestOnline/source/add?courseId=1&resourcesName=1&resources=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-17T025528.500.html
+
+###
+
+POST http://localhost:8080/TestOnline/source/add?courseId=1&resourcesName=1&resources=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-17T025400.500.html
+
+###
+
+POST http://localhost:8080/TestOnline/source/add?courseId=1&resourcesName=1&resources=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-17T025304.500.html
+
+###
+
+GET http://localhost:8080/TestOnline/course/showCourse
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-17T120021.404.html
+
+###
+
+GET http://localhost:8080/TestOnline/course/showCourse
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-17T105941.404.html
+
+###
+
+GET http://localhost:8080/TestOnline/course/showCourse
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-17T105935.404.html
+
+###
+
+POST http://localhost:8080/TestOnline/upload/uploadTest
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-17T104945.404.html
+
+###
+
+GET http://localhost:8080/TestOnline/course/getCourseInfo?courseId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-16T092646.200.xml
+
+###
+
+POST http://localhost:8080/TestOnline/papersfromstu/papers?state=0&paperId=1
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+POST http://localhost:8080/TestOnline/papersfromstu/papers?state=3&paperId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-09T125214.200.xml
+
+###
+
+POST http://localhost:8080/TestOnline/papersfromstu/papers?courseId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-09T125155.400.html
+
+###
+
+GET http://localhost:8080/TestOnline/paperservice/allpaper?courseId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-09T104648.200.xml
+
+###
+
+POST http://localhost:8080/TestOnline/paperservice/allpaper?courseId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-09T104643.405.html
+
+###
+
+POST http://localhost:8080/TestOnline/paperservice/minq?userId=1&paperId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T113247.200.xml
+
+###
+
+GET http://localhost:8080/TestOnline/paperservice/minq?userId=1&paperId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T113241.405.html
+
+###
+
+GET http://localhost:8080/TestOnline/course/stuCourse?userId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T110737.200.xml
+
+###
+
+GET http://localhost:8080/TestOnline/course/stuCourse?userId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T110517.200.xml
+
+###
+
+GET http://localhost:8080/TestOnline/course/teaCourse?userId=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T110242.200.xml
+
+###
+
+GET http://localhost:8080/TestOnline/course/teaCourse?userId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T110213.200.xml
+
+###
+
+GET http://localhost:8080/TestOnline/course/teaCourse?userId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T105943.200.xml
+
+###
+
+GET http://localhost:8080/TestOnline/course/stuCourse?userId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T105928.200.xml
+
+###
+
+GET http://localhost:8080/TestOnline/course/stuCourse?userId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T105927-1.200.xml
+
+###
+
+GET http://localhost:8080/TestOnline/course/stuCourse?userId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T105927.200.xml
+
+###
+
+GET http://localhost:8080/TestOnline/course/stuCourse?userId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T105925.200.xml
+
+###
+
+GET http://localhost:8080/TestOnline/course/stuCourse?userId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T105739.200.xml
+
+###
+
+GET http://localhost:8080/TestOnline/course/stuCourse?userId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T105349.200.xml
+
+###
+
+GET http://localhost:8080/TestOnline/course/stuCourse?userId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T105104.200.xml
+
+###
+
+GET http://localhost:8080/TestOnline/course/teaCourse?userId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T105048.200.xml
+
+###
+
+GET http://localhost:8080/TestOnline/course/teaCourse?userId=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T104952.200.xml
+
+###
+
+GET http://localhost:8080/TestOnline/course/searchCourse?searchInput=1&sType=teacher
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T101721.500.html
+
+###
+
+GET http://localhost:8080/TestOnline/course/searchCourse?searchInput=1&sType=teacher
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T101547.500.html
+
+###
+
+GET http://localhost:8080/TestOnline/testpaper/getPapers?courseId=1&userId=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T100543.200.xml
+
+###
+
+GET http://localhost:8080/TestOnline/testpaper/getPapers?courseId=1&userId=2
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T100423.500.html
+
+###
+
+POST http://localhost:8080/TestOnline/testpaper/getPapers?courseId=1&userId=2
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+POST http://localhost:8080/TestOnline/testpaper/getPapers?courseId=1&userId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T094920.500.html
+
+###
+
+POST http://localhost:8080/TestOnline/testpaper/getPapers?courseId=1&userId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T094801.500.html
+
+###
+
+GET http://localhost:8080/TestOnline/testpaper/getPapers?courseId=1&userId=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T094710.500.html
+
+###
+
+POST http://localhost:8080/TestOnline/paperservice/submit?courseId=1&questionIdList=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T091931.200.xml
+
+###
+
+POST http://localhost:8080/TestOnline/paperservice/submit?courseId=1&questionIdList=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T091730.500.html
+
+###
+
+POST http://localhost:8080/TestOnline/paperservice/submit?courseId=1&questionIdList=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T091723.500.html
+
+###
+
+GET http://localhost:8080/TestOnline/paperservice/submit?courseId=1&questionIdList=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T091714.405.html
+
+###
+
+GET http://localhost:8080/TestOnline/paperservice/getQ/1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T083654.200.xml
+
+###
+
+POST http://localhost:8080/TestOnline/course/searchCourse?searchInput=1&sType=teacher
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T012120.500.html
+
+###
+
+GET http://localhost:8080/TestOnline/course/searchCourse?searchInput=1&sType=teacher
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T012042.500.html
+
+###
+
+POST http://localhost:8080/TestOnline/course/searchCourse?searchInput=1&sType=teacher
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-08T012030.405.html
+
+###
+
+GET http://localhost:8080/TestOnline/testpaper/getAllsubject?paperid=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-05-07T115723.200.xml
+
+###
+

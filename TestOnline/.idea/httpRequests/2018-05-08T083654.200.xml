@@ -1,0 +1,35 @@
+<Result>
+    <status>
+        <code>0</code>
+    </status>
+    <dataList>
+        <dataList>
+            <queId>1</queId>
+            <queTag>0</queTag>
+            <courseId>1</courseId>
+            <queValue>5</queValue>
+            <queRank>1</queRank>
+        </dataList>
+        <dataList>
+            <queId>2</queId>
+            <queTag>0</queTag>
+            <courseId>1</courseId>
+            <queValue>5</queValue>
+            <queRank>1</queRank>
+        </dataList>
+        <dataList>
+            <queId>3</queId>
+            <queTag>1</queTag>
+            <courseId>1</courseId>
+            <queValue>15</queValue>
+            <queRank>1</queRank>
+        </dataList>
+        <dataList>
+            <queId>8</queId>
+            <queTag>0</queTag>
+            <courseId>1</courseId>
+            <queValue>15</queValue>
+            <queRank>1</queRank>
+        </dataList>
+    </dataList>
+</Result>

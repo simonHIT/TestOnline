@@ -1,0 +1,34 @@
+<Result>
+    <status>
+        <code>0</code>
+    </status>
+    <dataList>
+        <dataList>
+            <testPaperId>1</testPaperId>
+            <testPaperStateRecordId>5</testPaperStateRecordId>
+            <userUserId>1</userUserId>
+            <testPaperScoreRecordId>1</testPaperScoreRecordId>
+            <questionQueId>2</questionQueId>
+            <userGrade>5</userGrade>
+            <userAns>A</userAns>
+        </dataList>
+        <dataList>
+            <testPaperId>2</testPaperId>
+            <testPaperStateRecordId>5</testPaperStateRecordId>
+            <userUserId>1</userUserId>
+            <testPaperScoreRecordId>1</testPaperScoreRecordId>
+            <questionQueId>1</questionQueId>
+            <userGrade>5</userGrade>
+            <userAns>AB</userAns>
+        </dataList>
+        <dataList>
+            <testPaperId>3</testPaperId>
+            <testPaperStateRecordId>5</testPaperStateRecordId>
+            <userUserId>1</userUserId>
+            <testPaperScoreRecordId>1</testPaperScoreRecordId>
+            <questionQueId>3</questionQueId>
+            <userGrade>10</userGrade>
+            <userAns>test</userAns>
+        </dataList>
+    </dataList>
+</Result>

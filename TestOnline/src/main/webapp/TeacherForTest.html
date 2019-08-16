@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="static/css/init.css"/>
+		<link rel="stylesheet" href="static/css/common3.css" />
+		<link rel="stylesheet" href="static/css/teacherfortest.css" />
+		<script type="text/javascript" src="static/lib/jQuery/3.2.1/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="static/js/common.js" ></script>
+		<script type="text/javascript" src="static/js/TeacherForTest.js"></script>
+		<script type="text/javascript" src="static/lib/layer/layer.js" ></script>
+	</head>
+	<body>
+		<div class="container">
+			<!--导航div-->
+			<div class="nav_box">
+				<div class="nav_tit">
+					<p>优学网</p>
+					<div id="person_block">
+						
+						<div class="_userLoged">个人中心</div>
+						<div class="sets" style="display: none;">
+							<ul class="set">
+								<div class="e-hover-arrow"></div>
+								<div class="hover-arrow-border"></div>
+								<li><a id="_myCourse" class="f-fc6 f-fc7" href="#" target="_blank">管理课程</a></li>
+								<li><a id="myCourse" class="f-fc6" href="#" target="_blank">我的课程</a></li>
+								<li><a id="myInfo" class="f-fc6" href="ChangeUserInfo.html" target="_blank">设置</a></li>
+								<li><a class="f-fc6 f-logout" target="_blank" onclick="logout()">退出</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+					
+			</div>
+			
+			<div id="course_nav">
+				<!--
+                	模拟垂直分割线
+                -->
+				<div style="width:19%;border-right:1px solid darkgray;float:left;height:100%;"></div>
+				<label style="position: absolute;left: 210px;">课程名称</label>
+			</div>
+			
+			
+			<div id="course">
+				<!--
+					左侧导航列表部分
+                -->
+				<div class="option_list">
+					<ul>
+						<li style="width: 100%;height: 120px;">
+							<div class="courseImg" ></div>
+						</li>
+						<!--<li class="li_block">
+							<a href="AddQuestion.html">题目入库</a>
+						</li>-->
+						<li class="li_block">
+							<a href="AddCourseResource.html">课件</a>
+						</li>
+						<li class="li_block">
+							<a href="TeacherForTest.html">测试与作业</a>
+						</li>
+						<li class="li_block">
+							<a href="ViewScore.html">学生试卷</a>
+						</li>
+						<li class="li_block">
+							<a href="ViewScore2.html">评卷</a>
+						</li>
+					</ul>
+				</div>
+				
+				
+				<!--
+					右侧内容部分
+                -->
+                <form>
+				<div class="info_nav">
+					<div class="text_area">
+						<p style="font-size: 26px;">测验与作业</p>
+					</div>
+						<hr class="hr_line">
+						
+					<div class="test_list_area">
+						
+						<div class="test_block">
+							<div class="test_img">
+								
+							</div>
+							<a href="SetQuestion.html"><label>出卷</label></a>
+						</div>
+					</div>
+				</div>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

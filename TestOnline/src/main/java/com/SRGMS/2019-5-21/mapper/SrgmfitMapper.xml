@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.SRGMS.dao.SrgmfitMapper">
+  <resultMap id="BaseResultMap" type="com.SRGMS.model.Srgmfit">
+    <id column="SRGMFitId" jdbcType="INTEGER" property="srgmfitid" />
+    <result column="SRGMId" jdbcType="INTEGER" property="srgmid" />
+    <result column="DSId" jdbcType="INTEGER" property="dsid" />
+    <result column="MSE" jdbcType="DOUBLE" property="mse" />
+    <result column="MEOP" jdbcType="DOUBLE" property="meop" />
+    <result column="RSquare" jdbcType="DOUBLE" property="rsquare" />
+    <result column="Variation" jdbcType="DOUBLE" property="variation" />
+    <result column="RMS_PE" jdbcType="DOUBLE" property="rmsPe" />
+    <result column="TS" jdbcType="DOUBLE" property="ts" />
+    <result column="BMMRE" jdbcType="DOUBLE" property="bmmre" />
+    <result column="FitPath" jdbcType="VARCHAR" property="fitpath" />
+    <result column="REPath" jdbcType="VARCHAR" property="repath" />
+    <result column="ownerId" jdbcType="INTEGER" property="ownerid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    SRGMFitId, SRGMId, DSId, MSE, MEOP, RSquare, Variation, RMS_PE, TS, BMMRE, FitPath, 
+    REPath, ownerId
+  </sql>
+  <select id="selectByExample" parameterType="com.SRGMS.model.SrgmfitExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from srgmfit
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from srgmfit
+    where SRGMFitId = #{srgmfitid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from srgmfit
+    where SRGMFitId = #{srgmfitid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.SRGMS.model.SrgmfitExample">
+    delete from srgmfit
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.SRGMS.model.Srgmfit">
+    insert into srgmfit (SRGMFitId, SRGMId, DSId, 
+      MSE, MEOP, RSquare, Variation, 
+      RMS_PE, TS, BMMRE, FitPath, 
+      REPath, ownerId)
+    values (#{srgmfitid,jdbcType=INTEGER}, #{srgmid,jdbcType=INTEGER}, #{dsid,jdbcType=INTEGER}, 
+      #{mse,jdbcType=DOUBLE}, #{meop,jdbcType=DOUBLE}, #{rsquare,jdbcType=DOUBLE}, #{variation,jdbcType=DOUBLE}, 
+      #{rmsPe,jdbcType=DOUBLE}, #{ts,jdbcType=DOUBLE}, #{bmmre,jdbcType=DOUBLE}, #{fitpath,jdbcType=VARCHAR}, 
+      #{repath,jdbcType=VARCHAR}, #{ownerid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.SRGMS.model.Srgmfit">
+    insert into srgmfit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="srgmfitid != null">
+        SRGMFitId,
+      </if>
+      <if test="srgmid != null">
+        SRGMId,
+      </if>
+      <if test="dsid != null">
+        DSId,
+      </if>
+      <if test="mse != null">
+        MSE,
+      </if>
+      <if test="meop != null">
+        MEOP,
+      </if>
+      <if test="rsquare != null">
+        RSquare,
+      </if>
+      <if test="variation != null">
+        Variation,
+      </if>
+      <if test="rmsPe != null">
+        RMS_PE,
+      </if>
+      <if test="ts != null">
+        TS,
+      </if>
+      <if test="bmmre != null">
+        BMMRE,
+      </if>
+      <if test="fitpath != null">
+        FitPath,
+      </if>
+      <if test="repath != null">
+        REPath,
+      </if>
+      <if test="ownerid != null">
+        ownerId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="srgmfitid != null">
+        #{srgmfitid,jdbcType=INTEGER},
+      </if>
+      <if test="srgmid != null">
+        #{srgmid,jdbcType=INTEGER},
+      </if>
+      <if test="dsid != null">
+        #{dsid,jdbcType=INTEGER},
+      </if>
+      <if test="mse != null">
+        #{mse,jdbcType=DOUBLE},
+      </if>
+      <if test="meop != null">
+        #{meop,jdbcType=DOUBLE},
+      </if>
+      <if test="rsquare != null">
+        #{rsquare,jdbcType=DOUBLE},
+      </if>
+      <if test="variation != null">
+        #{variation,jdbcType=DOUBLE},
+      </if>
+      <if test="rmsPe != null">
+        #{rmsPe,jdbcType=DOUBLE},
+      </if>
+      <if test="ts != null">
+        #{ts,jdbcType=DOUBLE},
+      </if>
+      <if test="bmmre != null">
+        #{bmmre,jdbcType=DOUBLE},
+      </if>
+      <if test="fitpath != null">
+        #{fitpath,jdbcType=VARCHAR},
+      </if>
+      <if test="repath != null">
+        #{repath,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerid != null">
+        #{ownerid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.SRGMS.model.SrgmfitExample" resultType="java.lang.Long">
+    select count(*) from srgmfit
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update srgmfit
+    <set>
+      <if test="record.srgmfitid != null">
+        SRGMFitId = #{record.srgmfitid,jdbcType=INTEGER},
+      </if>
+      <if test="record.srgmid != null">
+        SRGMId = #{record.srgmid,jdbcType=INTEGER},
+      </if>
+      <if test="record.dsid != null">
+        DSId = #{record.dsid,jdbcType=INTEGER},
+      </if>
+      <if test="record.mse != null">
+        MSE = #{record.mse,jdbcType=DOUBLE},
+      </if>
+      <if test="record.meop != null">
+        MEOP = #{record.meop,jdbcType=DOUBLE},
+      </if>
+      <if test="record.rsquare != null">
+        RSquare = #{record.rsquare,jdbcType=DOUBLE},
+      </if>
+      <if test="record.variation != null">
+        Variation = #{record.variation,jdbcType=DOUBLE},
+      </if>
+      <if test="record.rmsPe != null">
+        RMS_PE = #{record.rmsPe,jdbcType=DOUBLE},
+      </if>
+      <if test="record.ts != null">
+        TS = #{record.ts,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bmmre != null">
+        BMMRE = #{record.bmmre,jdbcType=DOUBLE},
+      </if>
+      <if test="record.fitpath != null">
+        FitPath = #{record.fitpath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repath != null">
+        REPath = #{record.repath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ownerid != null">
+        ownerId = #{record.ownerid,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update srgmfit
+    set SRGMFitId = #{record.srgmfitid,jdbcType=INTEGER},
+      SRGMId = #{record.srgmid,jdbcType=INTEGER},
+      DSId = #{record.dsid,jdbcType=INTEGER},
+      MSE = #{record.mse,jdbcType=DOUBLE},
+      MEOP = #{record.meop,jdbcType=DOUBLE},
+      RSquare = #{record.rsquare,jdbcType=DOUBLE},
+      Variation = #{record.variation,jdbcType=DOUBLE},
+      RMS_PE = #{record.rmsPe,jdbcType=DOUBLE},
+      TS = #{record.ts,jdbcType=DOUBLE},
+      BMMRE = #{record.bmmre,jdbcType=DOUBLE},
+      FitPath = #{record.fitpath,jdbcType=VARCHAR},
+      REPath = #{record.repath,jdbcType=VARCHAR},
+      ownerId = #{record.ownerid,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.SRGMS.model.Srgmfit">
+    update srgmfit
+    <set>
+      <if test="srgmid != null">
+        SRGMId = #{srgmid,jdbcType=INTEGER},
+      </if>
+      <if test="dsid != null">
+        DSId = #{dsid,jdbcType=INTEGER},
+      </if>
+      <if test="mse != null">
+        MSE = #{mse,jdbcType=DOUBLE},
+      </if>
+      <if test="meop != null">
+        MEOP = #{meop,jdbcType=DOUBLE},
+      </if>
+      <if test="rsquare != null">
+        RSquare = #{rsquare,jdbcType=DOUBLE},
+      </if>
+      <if test="variation != null">
+        Variation = #{variation,jdbcType=DOUBLE},
+      </if>
+      <if test="rmsPe != null">
+        RMS_PE = #{rmsPe,jdbcType=DOUBLE},
+      </if>
+      <if test="ts != null">
+        TS = #{ts,jdbcType=DOUBLE},
+      </if>
+      <if test="bmmre != null">
+        BMMRE = #{bmmre,jdbcType=DOUBLE},
+      </if>
+      <if test="fitpath != null">
+        FitPath = #{fitpath,jdbcType=VARCHAR},
+      </if>
+      <if test="repath != null">
+        REPath = #{repath,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerid != null">
+        ownerId = #{ownerid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where SRGMFitId = #{srgmfitid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.SRGMS.model.Srgmfit">
+    update srgmfit
+    set SRGMId = #{srgmid,jdbcType=INTEGER},
+      DSId = #{dsid,jdbcType=INTEGER},
+      MSE = #{mse,jdbcType=DOUBLE},
+      MEOP = #{meop,jdbcType=DOUBLE},
+      RSquare = #{rsquare,jdbcType=DOUBLE},
+      Variation = #{variation,jdbcType=DOUBLE},
+      RMS_PE = #{rmsPe,jdbcType=DOUBLE},
+      TS = #{ts,jdbcType=DOUBLE},
+      BMMRE = #{bmmre,jdbcType=DOUBLE},
+      FitPath = #{fitpath,jdbcType=VARCHAR},
+      REPath = #{repath,jdbcType=VARCHAR},
+      ownerId = #{ownerid,jdbcType=INTEGER}
+    where SRGMFitId = #{srgmfitid,jdbcType=INTEGER}
+  </update>
+</mapper>

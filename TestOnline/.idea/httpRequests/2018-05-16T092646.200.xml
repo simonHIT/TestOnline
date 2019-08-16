@@ -1,0 +1,13 @@
+<Result>
+    <status>
+        <code>0</code>
+    </status>
+    <entity>
+        <courseId>1</courseId>
+        <courseName>TestCourse</courseName>
+        <userId>2</userId>
+        <courseTag>1</courseTag>
+        <courseImg>1</courseImg>
+        <courseInfo>2</courseInfo>
+    </entity>
+</Result>

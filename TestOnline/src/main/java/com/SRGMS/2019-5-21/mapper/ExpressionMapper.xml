@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.SRGMS.dao.ExpressionMapper">
+  <resultMap id="BaseResultMap" type="com.SRGMS.model.Expression">
+    <id column="idExpression" jdbcType="INTEGER" property="idexpression" />
+    <result column="WORM" jdbcType="CHAR" property="worm" />
+    <result column="emeterNum" jdbcType="INTEGER" property="emeternum" />
+    <result column="srgmId" jdbcType="INTEGER" property="srgmid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.SRGMS.model.Expression">
+    <result column="expression" jdbcType="LONGVARCHAR" property="expression" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    idExpression, WORM, emeterNum, srgmId
+  </sql>
+  <sql id="Blob_Column_List">
+    expression
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.SRGMS.model.ExpressionExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from expression
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.SRGMS.model.ExpressionExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from expression
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from expression
+    where idExpression = #{idexpression,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from expression
+    where idExpression = #{idexpression,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.SRGMS.model.ExpressionExample">
+    delete from expression
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.SRGMS.model.Expression">
+    insert into expression (idExpression, WORM, emeterNum, 
+      srgmId, expression)
+    values (#{idexpression,jdbcType=INTEGER}, #{worm,jdbcType=CHAR}, #{emeternum,jdbcType=INTEGER}, 
+      #{srgmid,jdbcType=INTEGER}, #{expression,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.SRGMS.model.Expression">
+    insert into expression
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idexpression != null">
+        idExpression,
+      </if>
+      <if test="worm != null">
+        WORM,
+      </if>
+      <if test="emeternum != null">
+        emeterNum,
+      </if>
+      <if test="srgmid != null">
+        srgmId,
+      </if>
+      <if test="expression != null">
+        expression,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idexpression != null">
+        #{idexpression,jdbcType=INTEGER},
+      </if>
+      <if test="worm != null">
+        #{worm,jdbcType=CHAR},
+      </if>
+      <if test="emeternum != null">
+        #{emeternum,jdbcType=INTEGER},
+      </if>
+      <if test="srgmid != null">
+        #{srgmid,jdbcType=INTEGER},
+      </if>
+      <if test="expression != null">
+        #{expression,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.SRGMS.model.ExpressionExample" resultType="java.lang.Long">
+    select count(*) from expression
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update expression
+    <set>
+      <if test="record.idexpression != null">
+        idExpression = #{record.idexpression,jdbcType=INTEGER},
+      </if>
+      <if test="record.worm != null">
+        WORM = #{record.worm,jdbcType=CHAR},
+      </if>
+      <if test="record.emeternum != null">
+        emeterNum = #{record.emeternum,jdbcType=INTEGER},
+      </if>
+      <if test="record.srgmid != null">
+        srgmId = #{record.srgmid,jdbcType=INTEGER},
+      </if>
+      <if test="record.expression != null">
+        expression = #{record.expression,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update expression
+    set idExpression = #{record.idexpression,jdbcType=INTEGER},
+      WORM = #{record.worm,jdbcType=CHAR},
+      emeterNum = #{record.emeternum,jdbcType=INTEGER},
+      srgmId = #{record.srgmid,jdbcType=INTEGER},
+      expression = #{record.expression,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update expression
+    set idExpression = #{record.idexpression,jdbcType=INTEGER},
+      WORM = #{record.worm,jdbcType=CHAR},
+      emeterNum = #{record.emeternum,jdbcType=INTEGER},
+      srgmId = #{record.srgmid,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.SRGMS.model.Expression">
+    update expression
+    <set>
+      <if test="worm != null">
+        WORM = #{worm,jdbcType=CHAR},
+      </if>
+      <if test="emeternum != null">
+        emeterNum = #{emeternum,jdbcType=INTEGER},
+      </if>
+      <if test="srgmid != null">
+        srgmId = #{srgmid,jdbcType=INTEGER},
+      </if>
+      <if test="expression != null">
+        expression = #{expression,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where idExpression = #{idexpression,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.SRGMS.model.Expression">
+    update expression
+    set WORM = #{worm,jdbcType=CHAR},
+      emeterNum = #{emeternum,jdbcType=INTEGER},
+      srgmId = #{srgmid,jdbcType=INTEGER},
+      expression = #{expression,jdbcType=LONGVARCHAR}
+    where idExpression = #{idexpression,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.SRGMS.model.Expression">
+    update expression
+    set WORM = #{worm,jdbcType=CHAR},
+      emeterNum = #{emeternum,jdbcType=INTEGER},
+      srgmId = #{srgmid,jdbcType=INTEGER}
+    where idExpression = #{idexpression,jdbcType=INTEGER}
+  </update>
+</mapper>

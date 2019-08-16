@@ -1,0 +1,80 @@
+.container #course_area{
+	width: 100%;
+	min-height: 600px;
+	height: 100%;
+	display: block;
+	margin: 15px auto;
+	border:solid;
+	border-width: 1px;
+	border-color: gainsboro;
+}
+
+.container .course_block{
+	background: #FFF;
+	width: 290px;
+	height: 200px;
+	float:left;
+	margin: 20px 20px;
+	border: solid;
+	border-width: 1px;
+	border-color: gainsboro;
+	text-align: center;
+}
+
+.container .course_img{
+	width:80%;
+	height: 60%;
+	margin: 5px auto 30px auto;
+	/*background-color: #90d65b;*/
+	background: url(../1.jpg) no-repeat;
+	background-size: 100%;
+}
+
+.course_block a{
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.course_type_block{
+	margin-top: 20px;
+	max-height: 530px;
+	min-height: 250px;
+	border-top: #CCC 1px solid;
+}
+
+.block_title{
+	line-height: 31px;
+    display: inline-block;
+    width: 100%;
+    font-family: 微软雅黑, "Microsoft YaHei";
+    font-size: 24px;
+    color: rgb(17, 17, 17);
+    text-align: left;
+    vertical-align: middle;
+    margin-top: 15px;
+}
+
+.n_courseBlock{
+	display: inline-block;
+    width: 300px;
+    height: 200px;
+    background: #FFF;
+    text-align: center;
+    margin: 15px;
+}
+
+.n_courseBlock a{
+	cursor: pointer;
+}
+
+.typefind{
+	line-height: normal;
+    display: inline-block;
+    width: 100%;
+    font-family: 微软雅黑, "Microsoft YaHei";
+    font-size: 13px;
+    color: rgb(51, 51, 51);
+    text-align: right;
+    vertical-align: middle;
+}
+

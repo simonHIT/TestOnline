@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.testOnline.dao.TestPaperStateMapper">
+  <resultMap id="BaseResultMap" type="com.testOnline.model.TestPaperState">
+    <id column="record_id" jdbcType="INTEGER" property="recordId" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="test_paper_id" jdbcType="INTEGER" property="testPaperId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    record_id, state, user_id, test_paper_id
+  </sql>
+  <select id="selectByExample" parameterType="com.testOnline.model.TestPaperStateExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from test_paper_state
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from test_paper_state
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from test_paper_state
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.testOnline.model.TestPaperStateExample">
+    delete from test_paper_state
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.testOnline.model.TestPaperState">
+    insert into test_paper_state (record_id, state, user_id, 
+      test_paper_id)
+    values (#{recordId,jdbcType=INTEGER}, #{state,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{testPaperId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.testOnline.model.TestPaperState" useGeneratedKeys="true" keyProperty="recordId">
+    insert into test_paper_state
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recordId != null">
+        record_id,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="testPaperId != null">
+        test_paper_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recordId != null">
+        #{recordId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="testPaperId != null">
+        #{testPaperId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.testOnline.model.TestPaperStateExample" resultType="java.lang.Long">
+    select count(*) from test_paper_state
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update test_paper_state
+    <set>
+      <if test="record.recordId != null">
+        record_id = #{record.recordId,jdbcType=INTEGER},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.testPaperId != null">
+        test_paper_id = #{record.testPaperId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update test_paper_state
+    set record_id = #{record.recordId,jdbcType=INTEGER},
+      state = #{record.state,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      test_paper_id = #{record.testPaperId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.testOnline.model.TestPaperState">
+    update test_paper_state
+    <set>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="testPaperId != null">
+        test_paper_id = #{testPaperId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.testOnline.model.TestPaperState">
+    update test_paper_state
+    set state = #{state,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      test_paper_id = #{testPaperId,jdbcType=INTEGER}
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </update>
+
+  <!-- count函数 -->
+  <select id="selectCnt" resultType="java.lang.Integer">
+    select count(*) from test_paper_score
+  </select>
+</mapper>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="static/css/init.css"/>
+		<link rel="stylesheet" href="static/css/common3.css" />
+		<link rel="stylesheet" href="static/css/setquestion.css" />
+		<script type="text/javascript" src="static/lib/jQuery/3.2.1/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="static/js/common.js" ></script>
+		<script type="text/javascript" src="static/lib/layer/layer.js" ></script>
+		<!--<script type="text/javascript" src="static/js/SetQuestion.js"></script>-->
+		<script src="static/lib/jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="static/lib/jqgrid/ui.jqgrid.css" />
+		<link rel="stylesheet" type="text/css" href="static/lib/jqgrid/css/ui-lightness/jquery-ui-1.8.16.custom.css" /> 
+		<script src="static/lib/jqgrid/jquery.jqGrid.extend.js" type="text/javascript"charset="utf-8"></script>
+		<script src="static/lib/jqgrid/grid.locale-cn.js" type="text/javascript"charset="utf-8"></script>
+		<script src="static/lib/jqgrid/jquery.jqGrid.src.js" type="text/javascript"charset="utf-8"></script>
+	</head>
+	<body>
+			<div class="container">
+			<!--导航div-->
+			<div class="nav_box"> 
+				<div class="nav_tit">
+					<p>优学网</p>
+					<div id="person_block">
+						
+						<div class="_userLoged">个人中心</div>
+						<div class="sets" style="display: none;">
+							<ul class="set">
+								<div class="e-hover-arrow"></div>
+								<div class="hover-arrow-border"></div>
+								<li><a id="_myCourse" class="f-fc6 f-fc7" href="#" target="_blank">管理课程</a></li>
+								<li><a id="myCourse" class="f-fc6" href="#" target="_blank">我的课程</a></li>
+								<li><a id="myInfo" class="f-fc6" href="ChangeUserInfo.html" target="_blank">设置</a></li>
+								<li><a class="f-fc6 f-logout" target="_blank" onclick="logout()">退出</a></li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+					
+			</div>
+			
+			<div id="course_nav">
+				<!--
+                	模拟垂直分割线
+                -->
+				<div style="width:19%;border-right:1px solid darkgray;float:left;height:100%;"></div>
+				<label id="_courseName" style="position: absolute;left: 210px;">课程名称</label>
+			</div>
+			
+			
+			<div id="course">
+				<!--
+					左侧导航列表部分
+                -->
+				<div class="option_list">
+					<ul>
+						<li style="width: 100%;height: 120px;">
+							<div class="courseImg" ></div>
+						</li>
+						<!--<li class="li_block">
+							<a href="AddQuestion.html">题目入库</a>
+						</li>-->
+						<li class="li_block">
+							<a href="AddCourseResource.html">课件</a>
+						</li>
+						<li class="li_block">
+							<a href="TeacherForTest.html">测试与作业</a>
+						</li>
+						<li class="li_block">
+							<a href="ViewScore.html">学生试卷</a>
+						</li>
+						<li class="li_block">
+							<a href="ViewScore2.html">评卷</a>
+						</li>
+					</ul>
+				</div>
+				
+				
+				<!--
+					右侧内容部分
+                -->
+                
+				<div class="info_nav">
+					
+					<div class="text_area">
+						<p style="font-size: 26px;">出卷</p>
+					</div>
+					<div class="addQuestionsLayer">
+						<div class="addLayer"><button class="submit_btn">题库添加</button></div>
+					</div>
+					
+					<div>
+						<br />
+							<table id="gvContract" >
+								
+							</table>
+							<div id="jqGridPager"></div>
+					</div>
+					
+					<div class="line1" id="debtn">
+						<button class="submit_btn" onclick="onDelete()" >删除</button>
+					</div>
+					
+					<div class="line1" id="subtn">
+						<button class="submit_btn" style="margin-right: 50px;">提交</button>
+					</div>
+				</div>	
+			</div>
+			</div>
+			
+			<script type="text/javascript">
+				var _courseId = "1";
+				var courseId = "1";
+				if(localStorage.courseInfo != null && localStorage.courseInfo != ""){
+					var courseInfo = localStorage.courseInfo;
+					var _courseInfo = eval("("+courseInfo+")");
+					console.log(_courseInfo.courseId);
+					courseId = _courseInfo.courseId;
+					_courseId = _courseInfo.courseId;
+					$("#_courseName").html("");
+					$("#_courseName").html(_courseInfo.courseName);
+					
+					var img = "../TestOnline/static/upload/" + _courseInfo.courseImg;
+					$(".courseImg").css("background","url("+ img +")");
+					$(".courseImg").css("background-size","100%");
+				}
+				$(function(){
+						
+						
+						$("#gvContract").jqGrid({
+				            url:"../TestOnline/paperservice/getQ/" + courseId,
+				            
+				            datatype: "json",
+				           /* datatype:"local",
+				            data:HYMC,*/
+				           
+							colModel: [
+							           {label:'queId',name: 'queId', width: 100, align: 'center', hidden:true},
+							           {label:'题干',name: 'queInfo',index:'queInfo', width: 260, align: 'center',cellattr: addCellAttr},
+							           {label:'题目类型',name: 'queTag', width: 50, align: 'center',cellattr: addCellAttr,
+			 			          		 formatter: function (cellvalue, options, rowObject) {
+					           				if(cellvalue != ""){
+					           					if(rowObject.queTag==0){
+					           						return "选择题";
+					           					}else{
+					           						return "简答题";
+					           					}
+					           				}
+				                    	}},
+							           {label:'答案',name: 'queAns', width: 100, align: 'center',cellattr: addCellAttr},
+				 			           {label:'分值',name: 'queValue', width: 50, align: 'center',cellattr: addCellAttr},
+							          
+							        ],
+							//rownumbers: true,//序号
+							altRows:true, //隔行变色开启
+							altclass: 'altClass',//渐变色样式 altrows为true时生效
+							shrinkToFit:true,//动态列宽
+							//autoScroll: true,// 当shrinkToFit:false 该项设置为true 出现滚动条
+				            autowidth: true,//自适应表格宽度
+				            
+				            height : "450px",
+							pagination: false,
+							loadonce: true  ,
+							multiselect:true,
+							rowList:false, //可调整每页显示的记录数 
+//				            pager: "#jqGridPager",
+				            jsonReader: {
+								root: "dataList", 
+								
+								repeatitems: true,
+								
+							}, 
+				            
+				        });
+				});
+				function addCellAttr(rowId, val, rawObject, cm, rdata) {
+				                    return "style='color:BLACK'";
+				}
+				$(document).ready(function(){
+				  $("#subtn").delegate("button","click",function(){
+						var ids=$("#gvContract").jqGrid("getGridParam","selarrrow");
+						var queIdList = new Array();
+						for(var i = 0 ; i < ids.length ; i++){
+							var rowId = ids[i];
+							var rowData = $("#gvContract").jqGrid("getRowData",rowId);
+							queIdList.push(rowData.queId);
+						}
+						var _quesIdList = queIdList.toString().replace(/\[.*?\]/g,'');
+						
+						var mydata = {
+							courseId:_courseId,
+							questionIdList:_quesIdList
+						}
+						
+						$.ajax({
+							type:"POST",
+							url:"../TestOnline/paperservice/submit",
+							async:true,
+							dataType: 'json',
+							cache:false,
+							data: mydata,
+							success:function(reg){
+								console.log(reg);
+								alert("出卷成功");
+								window.history.back(-1); 
+							},error: function(XMLHttpRequest){  
+					     		alert( "Error: " + XMLHttpRequest.responseText);  
+					   		} 
+						});
+					});
+				});
+				
+				function getQueryVariable(variable)
+				{
+				       var query = window.location.search.substring(1);
+				       var vars = query.split("&");
+				       for (var i=0;i<vars.length;i++) {
+				               var pair = vars[i].split("=");
+				               if(pair[0] == variable){return pair[1];}
+				       }
+				       return(false);
+				}
+				
+				$(document).ready(function(){
+				  $(".addLayer").delegate("button","click",function(){
+						layer.tab({
+						  area: ['600px', '500px'],
+						  tab: [{
+						    title: '选择题', 
+						    content: $(".add_choiceque_area").html()
+						  }, {
+						    title: '非选择题', 
+						    content: $(".add_answerque_area").html()
+						  }]
+						});
+					});
+				});
+								
+				function addQuestion(){
+					var _queInfo = "";
+					$(".input_info0").each(function(index,item){
+						var _quesOption = $(item).val();
+						if(_quesOption != ""){
+							_queInfo += _quesOption
+						}
+					})
+					var _queoptions = new Array();
+					$(".queOption").each(function(index,item){
+						var _quesOption = $(item).val();
+						if(_quesOption != ""){
+							_queoptions.push(_quesOption);
+						}
+					})
+					var _queAns ="";
+					$(".queAns1").each(function(index,item){
+						var _quesOption = $(item).val();
+						if(_quesOption != ""){
+							_queAns += _quesOption
+						}
+					})
+					var _queTag = "0";
+					var _queValue = "5";
+					var _queRank = "1";
+					var _queoptionList = _queoptions.toString().replace(/\[.*?\]/g,'');
+//					var _courseId = $("#courseSelect").val();
+					var mydata = {
+				        queInfo: _queInfo,
+				        queTag: _queTag,
+				        courseId:_courseId,
+				        aueAns:_queAns,
+				        queValue: _queValue,
+				        queRank:_queRank,
+				        options:_queoptionList,
+				    };
+					console.log(mydata);
+					$.ajax({
+						type:"POST",
+						url:"../TestOnline/question/add",
+						async:true,
+						cache:false,
+						data: mydata,
+						dataType: 'json',
+						success:function(reg){
+							console.log(reg);
+							alert("添加成功");
+							window.location.reload()
+						},error: function(XMLHttpRequest){  
+				     	alert( "Error: " + XMLHttpRequest.responseText);  
+				   	} 
+					});
+				}
+				
+				function addQuestion2(){
+					var _queInfo = "";
+					$(".input_info1").each(function(index,item){
+						var _quesOption = $(item).val();
+						if(_quesOption != ""){
+							_queInfo += _quesOption
+						}
+					})
+					var _queTag = "1";
+					var _queAns ="";
+					$(".queAns2").each(function(index,item){
+						var _quesOption = $(item).val();
+						if(_quesOption != ""){
+							_queAns += _quesOption
+						}
+					})
+					var _queValue = "15";
+					var _queRank = "1";
+					
+					var mydata = {
+				        queInfo: _queInfo,
+				        queTag: _queTag,
+				        courseId:_courseId,
+				        aueAns:_queAns,
+				        queValue: _queValue,
+				        queRank:_queRank,
+				    };
+					console.log(mydata);
+					$.ajax({
+						type:"POST",
+						url:"../TestOnline/question/add",
+						async:true,
+						cache:false,
+						data: mydata,
+						dataType: 'json',
+						success:function(reg){
+							console.log(reg);
+							alert("添加成功");
+							window.location.reload()
+						},error: function(XMLHttpRequest){  
+				     		alert( "Error: " + XMLHttpRequest.responseText);  
+				   		} 
+					});
+				}
+				
+				function onDelete(){
+					var ids=$("#gvContract").jqGrid("getGridParam","selarrrow");
+					var queIdList = new Array();
+					for(var i = 0 ; i < ids.length ; i++){
+						var rowId = ids[i];
+						var rowData = $("#gvContract").jqGrid("getRowData",rowId);
+						queIdList.push(rowData.queId);
+					}
+					var _quesIdList = queIdList.toString().replace(/\[.*?\]/g,'');
+					
+					var mydata = {
+							queId:_quesIdList
+						}
+						
+						$.ajax({
+							type:"POST",
+							url:"../TestOnline/deletes/deletequeId",
+							async:true,
+							dataType: 'json',
+							cache:false,
+							data: mydata,
+							success:function(reg){
+								console.log(reg);
+								if(reg.entity==200){
+									alert("删除成功");
+									window.location.reload()
+								}else {
+									alert("删除失败");
+								}
+							},error: function(XMLHttpRequest){  
+					     		alert("删除失败");
+					   		} 
+						});
+				}
+	</script>
+	</body>
+	<div id="boxs">
+				<div class="mBox2">
+					<div class="add_answerque_area">
+						<div class="box_title">
+							<label style="margin: 40px 25px;font-size: 24px;">简答题</label>
+							
+						</div>
+						<div class="box_main">
+							<div class="line1">
+							<label class="label1">题干</label>
+							<input class="input_info1" id="queInfo2" type="text" />
+							</div>
+							<div class="line1">
+								<label class="label1">答案</label>
+								<input  class="input_info queAns2" id="queAns2" type="text" />
+							</div>
+						</div>
+						
+						<div class="line1" id="addQ2">
+							<button class="submit_btn" onclick="addQuestion2()">提交</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="mBox">
+					<div class="add_choiceque_area">
+						<div class="box_title">
+							<label style="margin: 40px 25px;font-size: 24px;">非简答题</label>
+						</div>
+						<div class="line1">
+							<label class="label1">题干</label>
+							<input class="input_info0" id="queInfo1" type="text"/>
+						</div>
+						
+						<div class="line1">
+							<label class="label1">选项A</label>
+							<input  class="input_info queOption" type="text" />
+						
+							<label class="label1">选项B</label>
+							<input  class="input_info queOption" type="text" />
+						</div>
+						
+						<div class="line1">
+							<label class="label1">选项C</label>
+							<input class="input_info queOption" type="text" />
+						
+							<label class="label1">选项D</label>
+							<input  class="input_info queOption" type="text" />
+						</div>
+						
+						<div class="line1">
+							<label class="label1">选项E</label>
+							<input  class="input_info queOption" type="text" />
+						</div>
+						
+						<div class="line1">
+							<label class="label1">答案</label>
+							<input  class="input_info queAns1" id="queAns1" type="text" />
+						</div>
+						
+						
+						<div class="line1" id="addQ">
+							<button class="submit_btn" onclick="addQuestion()">提交</button>
+						</div>
+					</div>
+				</div>
+			</div>
+</html>

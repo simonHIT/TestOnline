@@ -1,0 +1,21 @@
+._files {
+	font-size: 15px;
+	padding-left: 100px;
+	padding-top: 15px;
+	height: 30px;
+	border-bottom: 1px solid #ccc;
+	
+}
+
+._files a{
+	cursor: pointer;
+}
+
+
+._filed{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	background: url(../images/down.jpg) no-repeat;
+	background-size: 100%;
+}

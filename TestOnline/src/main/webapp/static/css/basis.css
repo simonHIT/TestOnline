@@ -1,0 +1,92 @@
+.container .content .right_box{
+	padding: 0 20px 0 20px;
+}
+.container .content .right_box .search_box {
+  position: relative;
+  margin: 20px 0 0 0;
+}
+.container .content .right_box .search_box select {
+  width: 90px;
+  height: 30px;
+}
+.container .content .right_box .search_box input {
+  width: 200px;
+  height: 26px;
+}
+.container .content .right_box .search_box .search_btn {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 320px;
+  top: 1px;
+  background: url(../img/search.png) no-repeat center;
+  background-size: 100%;
+  cursor: pointer;
+}
+.container .content .right_box .search_box .in_btn {
+  margin-left: 180px;
+}
+.container .content .right_box .search_box .btn {
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  padding: 0 10px;
+}
+.tb_box{
+	display: none;
+}
+.table table {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.table .td1 {
+	width: 100px;
+}
+
+.tb_box .p1 {
+	margin: 10px 0 10px 55px;
+	width: 300px;
+}
+
+.tb_box .p1 input {
+	border-radius: 3px;
+	width: 200px;
+	height: 25px;
+}
+
+.tb_box .p1 select {
+	width: 205px;
+	height: 30px;
+    border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius :5px;
+}
+
+.tb_box .p1 .button1 {
+	margin: 0 0 0 75px;
+	border-radius: 3px;
+	width: 210px;
+	height: 30px;
+}
+
+.tb_box .p2 {
+	margin: 0 60px 0 0;
+	float: right;
+}
+
+.tb_box .p2 .button2 {
+	border-radius: 3px;
+	width: 50px;
+	height: 30px;
+}
+
+.left_box a {
+	cursor:pointer;
+	background: url(../img/add.jpg) center no-repeat;
+}
+
+.search {
+	cursor:pointer;
+	background: url(../img/search.png) center no-repeat;
+}

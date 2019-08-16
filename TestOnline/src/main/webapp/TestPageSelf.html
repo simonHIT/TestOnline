@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="static/css/init.css"/>
+		<link rel="stylesheet" href="static/css/common3.css" />
+		<link rel="stylesheet" href="static/css/test.css" />
+		<script type="text/javascript" src="static/lib/jQuery/3.2.1/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="static/js/common.js" ></script>
+		<script type="text/javascript" src="static/js/TestPageSelf.js"></script>
+		<script type="text/javascript" src="static/lib/layer/layer.js" ></script>
+	</head>
+	<body>
+		<div class="container">
+			<!--导航div-->
+			<div class="nav_box">
+				<div class="nav_tit">
+					<p>优学网</p>
+					<div id="person_block">
+						
+						<div class="_userLoged">个人中心</div>
+						<div class="sets" style="display: none;">
+							<ul class="set">
+								<div class="e-hover-arrow"></div>
+								<div class="hover-arrow-border"></div>
+								<li><a id="_myCourse" class="f-fc6 f-fc7" href="#" target="_blank">管理课程</a></li>
+								<li><a id="myCourse" class="f-fc6" href="#" target="_blank">我的课程</a></li>
+								<li><a id="myInfo" class="f-fc6" href="ChangeUserInfo.html" target="_blank">设置</a></li>
+								<li><a class="f-fc6 f-logout" target="_blank" onclick="logout()">退出</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+					
+			</div>
+			
+			<div id="course_nav">
+				<!--
+                	模拟垂直分割线
+                -->
+				<div style="width:19%;border-right:1px solid darkgray;float:left;height:100%;"></div>
+				<label style="position: absolute;left: 210px;">课程名称</label>
+			</div>
+			
+			<div id="test_area">
+				<div id="test_name">
+					<label>测试</label>
+				</div>
+				
+				<hr class="hr_line">
+				
+				<!--<div class="choice_question_area" data-id = "">
+					<p>1.在含盐10%的的盐水中，再加入5g盐和5g水。现在比例是（）</p>
+					<input class="rad_button" type="radio" name="choice"/>A. 1:10 
+					<input class="rad_button" type="radio" name="choice"/>B. 2:9
+					<input class="rad_button" type="radio" name="choice"/>C: 3:8
+					<input class="rad_button" type="radio" name="choice"/>D: 1:1
+				</div >
+				
+				<hr class="hr_line">
+				
+				<div class="answer_question_area" data-id ="">
+					<p>2.在含盐10%的的盐水中，再加入5g盐和5g水。现在比例是（）</p>
+					<textarea id="answer_area"></textarea>
+				</div>-->
+
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="static/css/init.css"/>
+		<link rel="stylesheet" href="static/css/common3.css" />
+		<link rel="stylesheet" href="static/css/addquestion.css" />
+		<script type="text/javascript" src="static/lib/jQuery/3.2.1/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="static/js/AddQuestion.js"></script>
+		<script type="text/javascript" src="static/js/common.js" ></script>
+		<script type="text/javascript" src="static/lib/layer/layer.js" ></script>
+		<script type="text/javascript" src="static/layui/layui.js" ></script>
+		<link rel="stylesheet" href="static/layui/css/layui.css" media="all">
+		<script type="text/javascript" src="static/js/courseResource.js"></script>
+		<link rel="stylesheet" href="static/css/courseFile.css" />
+	</head>
+	<body>
+		<div class="container">
+			<!--导航div-->
+			<div class="nav_box">
+				<div class="nav_tit">
+					<p>优学网</p>
+					<div id="person_block">
+						
+						<div class="_userLoged">个人中心</div>
+						<div class="sets" style="display: none;">
+							<ul class="set">
+								<div class="e-hover-arrow"></div>
+								<div class="hover-arrow-border"></div>
+								<li><a id="_myCourse" class="f-fc6 f-fc7" href="#" target="_blank">管理课程</a></li>
+								<li><a id="myCourse" class="f-fc6" href="#" target="_blank">我的课程</a></li>
+								<li><a id="myInfo" class="f-fc6" href="ChangeUserInfo.html" target="_blank">设置</a></li>
+								<li><a class="f-fc6 f-logout" target="_blank" onclick="logout()">退出</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+					
+			</div>
+			
+			<div id="course_nav">
+				<!--
+                	模拟垂直分割线
+                -->
+				<div style="width:19%;border-right:1px solid darkgray;float:left;height:100%;"></div>
+				<label id="_courseName" style="position: absolute;left: 210px;">课程名称</label>
+			</div>
+			
+			
+			<div id="course">
+				<!--
+					左侧导航列表部分
+                -->
+				<div class="option_list">
+					<ul>
+						<li style="width: 100%;height: 120px;">
+							<div class="courseImg" ></div>
+						</li>
+						<!--<li class="li_block">
+							<a href="AddQuestion.html">题目入库</a>
+						</li>-->
+						<li class="li_block">
+							<a href="AddCourseResource.html">课件</a>
+						</li>
+						<li class="li_block">
+							<a href="TeacherForTest.html">测试与作业</a>
+						</li>
+						<li class="li_block">
+							<a href="ViewScore.html">学生试卷</a>
+						</li>
+						<li class="li_block">
+							<a href="ViewScore2.html">评卷</a>
+						</li>
+					</ul>
+				</div>
+				
+				
+				<!--
+					右侧内容部分
+                -->
+				<div class="info_nav">
+					<div class="text_area">
+						<p style="font-size: 26px;">课件</p>
+					</div>
+						
+					<div class="add_btn" style="margin-left: 450px;">
+						<div class="layui-upload">
+							<button type="button" class="layui-btn layui-btn-normal" id="test8">选择文件</button>
+							<button type="button" class="layui-btn" id="test9">开始上传</button>
+						</div>
+					</div>
+					<hr class="hr_line">
+					<div class="test_list_area">
+						<!--<div class="_files"><div class="_filed"></div><a>151110207.doc</a></div>-->
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<script>
+			
+			layui.use('upload', function() {
+				var upload = layui.upload;
+				//选完文件后不自动上传
+				var uploadInst = upload.render({
+					elem: '#test8',
+					url: '../TestOnline/fileup/upload',
+					auto: false,
+					accept: 'file'
+						//,multiple: true
+						,
+					bindAction: '#test9',
+					done: function(res) {
+						console.log(res)
+						var murl = res.map.image;
+						var fname = res.map.fname;
+						uploadFile(murl,fname)
+					}
+				});
+			});
+
+			function uploadFile(murl,fname) {
+				if(localStorage.courseInfo != null || localStorage.courseInfo != ""){
+					var courseInfo = localStorage.courseInfo;
+					var _courseInfo = eval("("+courseInfo+")");
+					console.log(_courseInfo.courseId);
+//					courseId = _courseInfo.courseId;
+				}
+				var courseId = _courseInfo.courseId;
+				var resourcesName = fname;
+				var resources = murl;
+				var mydata = {
+					courseId: courseId,
+					resourcesName: resourcesName,
+					resources: resources,
+				}
+				console.log(mydata);
+				$.ajax({
+					type: "POST",
+					url: "../TestOnline/source/add",
+					async: true,
+					dataType: 'json',
+					cache: false,
+					data: mydata,
+					success: function(reg) {
+						console.log(reg);
+					},
+					error: function(XMLHttpRequest) {
+						alert("Error: " + XMLHttpRequest.responseText);
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

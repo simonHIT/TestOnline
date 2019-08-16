@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="static/css/login.css" />
+		<script type="text/javascript" src="static/lib/jquery-1.11.1.min.js" ></script>
+		<script type="text/javascript" src="static/js/common.js" ></script>
+		<script type="text/javascript" src="static/lib/layer/layer.js" ></script>
+		<script type="text/javascript" src="static/js/Login.js"></script>
+        <script type="text/javascript" src="static/js/Valiadate.js"></script>
+        <script type="text/javascript" src="static/lib/jquery.cookie.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="login_block">
+				<p id="wel_p">登录</p>
+			
+				<div class="line_block">
+					<input id="username" class="input_text" type="text" placeholder="用户名" onblur="checkUser()"/>
+					<span style="color: red;" id="user_prompt"></span>
+				</div>
+			
+				<div class="line_block">
+					<input id="password" class="input_text" type="password" placeholder="密码" onblur="checkPwd()"/>
+					<span style="color: red;" id="pwd_prompt"></span>
+				</div>
+				
+				<div id="selectb">
+					<input type="checkbox" id="remember_" />记住密码
+					<a style="float: right;" onclick="forgetPassword()">忘记密码</a>
+				</div>
+				<div class="line_block" id="login_">
+					<button id="login_btn" >登录</button>
+				</div>
+				<div class="line_block" id="register_">
+					<button class="register_btn">注册</button>
+				</div>
+                <input id="tag" type="hidden" value="1">
+                <span id="info" style="color: red" ></span>
+			</div>
+		</div>
+	</body>
+</html>

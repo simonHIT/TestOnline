@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <!--absolutely path-->
+    <classPathEntry location="D:\Software\Program Files (x86)\Code Tools\maven-responsity\mysql\mysql-connector-java\5.1.41\mysql-connector-java-5.1.41.jar" />
+    <!--<classPathEntry location="/home/si9ma/.m2/repository/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar" />-->
+    <context id="SRGMS" targetRuntime="MyBatis3">
+
+        <!-- ignore comment-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+
+        <!--db connection-->
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+        <!--connectionURL="jdbc:mysql://172.26.24.6:3306/DeviceManage"-->
+        <!--userId="test"-->
+        <!--password="test123@MYSQL">-->
+        <!--</jdbcConnection>-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/SRGMDataBase"
+                        userId="root"
+                        password="Root@mysql123">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!--model-->
+        <javaModelGenerator targetPackage="com.SRGMS.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- sql mapper -->
+        <sqlMapGenerator targetPackage="com.SRGMS.mapper"  targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- mybatis3 mapper interface -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.SRGMS.dao"  targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+
+        <table tableName="DataSource"></table>
+        <table tableName="DSDetail"></table>
+        <table tableName="DSType"></table>
+        <table tableName="Emeter"></table>
+        <table tableName="expression"></table>
+        <table tableName="FitDetail"></table>
+        <table tableName="SRGM_DS_Map"></table>
+        <table tableName="SRGMFit"></table>
+        <table tableName="SRGMS"></table>
+        <table tableName="SRGMType"></table>
+        <table tableName="User"></table>
+        <table tableName="UserType"></table>
+        <table tableName="FitDetail_result"></table>
+        <table tableName="ReData"></table>
+        <table tableName="DsDetailResult"></table>
+
+    </context>
+</generatorConfiguration>

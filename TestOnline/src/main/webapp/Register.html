@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="static/css/register.css" />
+		<script type="text/javascript" src="static/lib/jquery-1.11.1.min.js" ></script>
+		<script type="text/javascript" src="static/js/common.js" ></script>
+		<script type="text/javascript" src="static/lib/layer/layer.js" ></script>
+		<script type="text/javascript" src="static/js/Register.js"></script>
+		<script type="text/javascript" src="static/js/Valiadate.js"></script>
+	</head>
+	<body>
+		<div class="left_image">
+			
+		</div>
+		<div style="width: 10%;">
+			
+		</div>
+		<div class="right_register_area">
+			<p id="wel_p">欢迎注册</p>
+			
+			<div class="line_block">
+				<input id="username" class="input_text" type="text" placeholder="用户名" onblur="checkUser()" /><br>
+				<span style="color: red;" id="user_prompt"></span>
+			</div>
+			
+			<div class="line_block">
+				<input id="password" class="input_text" type="password" placeholder="密码" onblur="checkPwd()"/><br>
+				<span style="color: red;" id="pwd_prompt"></span>
+			</div>
+			
+			<div class="line_block">
+				<input id="password2" class="input_text" type="password" placeholder="确认密码" onblur="checkRepwd()" /><br>
+				<span style="color: red;" id="repwd_prompt"></span>
+			</div>
+			<div class="line_block">
+				<input id="mail" class="input_text" type="text" placeholder="邮箱地址" onblur="checkEmail()" /><br>
+				<span style="color: red;" id="email_prompt"></span>
+				<p id="tip_p">可通过该邮箱找回密码</p>
+			</div>
+			<div class="line_block">
+				<input class="input_radio" type="radio" name="roleRadio" value="1" checked/> 学生
+				<input class="input_radio" type="radio" name="roleRadio" value="2" /> 教师
+			</div>
+			
+			
+			
+			<div id="regist_">
+				<button id="regis_btn" >立即注册</button>
+			</div>
+			<input id="tag" type="hidden" value="1">
+		</div>
+	</body>
+</html>

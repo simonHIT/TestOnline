@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.SRGMS.dao.DatasourceMapper">
+  <resultMap id="BaseResultMap" type="com.SRGMS.model.Datasource">
+    <id column="DSId" jdbcType="INTEGER" property="dsid" />
+    <result column="DSName" jdbcType="VARCHAR" property="dsname" />
+    <result column="DSTypeId" jdbcType="INTEGER" property="dstypeid" />
+    <result column="Time" jdbcType="TIMESTAMP" property="time" />
+    <result column="Publication" jdbcType="VARCHAR" property="publication" />
+    <result column="UserId" jdbcType="INTEGER" property="userid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.SRGMS.model.Datasource">
+    <result column="Description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    DSId, DSName, DSTypeId, Time, Publication, UserId
+  </sql>
+  <sql id="Blob_Column_List">
+    Description
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.SRGMS.model.DatasourceExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from DataSource
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.SRGMS.model.DatasourceExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from DataSource
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from DataSource
+    where DSId = #{dsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from DataSource
+    where DSId = #{dsid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.SRGMS.model.DatasourceExample">
+    delete from DataSource
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.SRGMS.model.Datasource">
+    insert into DataSource (DSId, DSName, DSTypeId, 
+      Time, Publication, UserId, 
+      Description)
+    values (#{dsid,jdbcType=INTEGER}, #{dsname,jdbcType=VARCHAR}, #{dstypeid,jdbcType=INTEGER}, 
+      #{time,jdbcType=TIMESTAMP}, #{publication,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.SRGMS.model.Datasource">
+    insert into DataSource
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dsid != null">
+        DSId,
+      </if>
+      <if test="dsname != null">
+        DSName,
+      </if>
+      <if test="dstypeid != null">
+        DSTypeId,
+      </if>
+      <if test="time != null">
+        Time,
+      </if>
+      <if test="publication != null">
+        Publication,
+      </if>
+      <if test="userid != null">
+        UserId,
+      </if>
+      <if test="description != null">
+        Description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dsid != null">
+        #{dsid,jdbcType=INTEGER},
+      </if>
+      <if test="dsname != null">
+        #{dsname,jdbcType=VARCHAR},
+      </if>
+      <if test="dstypeid != null">
+        #{dstypeid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publication != null">
+        #{publication,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.SRGMS.model.DatasourceExample" resultType="java.lang.Long">
+    select count(*) from DataSource
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update DataSource
+    <set>
+      <if test="record.dsid != null">
+        DSId = #{record.dsid,jdbcType=INTEGER},
+      </if>
+      <if test="record.dsname != null">
+        DSName = #{record.dsname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dstypeid != null">
+        DSTypeId = #{record.dstypeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.time != null">
+        Time = #{record.time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.publication != null">
+        Publication = #{record.publication,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userid != null">
+        UserId = #{record.userid,jdbcType=INTEGER},
+      </if>
+      <if test="record.description != null">
+        Description = #{record.description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update DataSource
+    set DSId = #{record.dsid,jdbcType=INTEGER},
+      DSName = #{record.dsname,jdbcType=VARCHAR},
+      DSTypeId = #{record.dstypeid,jdbcType=INTEGER},
+      Time = #{record.time,jdbcType=TIMESTAMP},
+      Publication = #{record.publication,jdbcType=VARCHAR},
+      UserId = #{record.userid,jdbcType=INTEGER},
+      Description = #{record.description,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update DataSource
+    set DSId = #{record.dsid,jdbcType=INTEGER},
+      DSName = #{record.dsname,jdbcType=VARCHAR},
+      DSTypeId = #{record.dstypeid,jdbcType=INTEGER},
+      Time = #{record.time,jdbcType=TIMESTAMP},
+      Publication = #{record.publication,jdbcType=VARCHAR},
+      UserId = #{record.userid,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.SRGMS.model.Datasource">
+    update DataSource
+    <set>
+      <if test="dsname != null">
+        DSName = #{dsname,jdbcType=VARCHAR},
+      </if>
+      <if test="dstypeid != null">
+        DSTypeId = #{dstypeid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        Time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publication != null">
+        Publication = #{publication,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        UserId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        Description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where DSId = #{dsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.SRGMS.model.Datasource">
+    update DataSource
+    set DSName = #{dsname,jdbcType=VARCHAR},
+      DSTypeId = #{dstypeid,jdbcType=INTEGER},
+      Time = #{time,jdbcType=TIMESTAMP},
+      Publication = #{publication,jdbcType=VARCHAR},
+      UserId = #{userid,jdbcType=INTEGER},
+      Description = #{description,jdbcType=LONGVARCHAR}
+    where DSId = #{dsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.SRGMS.model.Datasource">
+    update DataSource
+    set DSName = #{dsname,jdbcType=VARCHAR},
+      DSTypeId = #{dstypeid,jdbcType=INTEGER},
+      Time = #{time,jdbcType=TIMESTAMP},
+      Publication = #{publication,jdbcType=VARCHAR},
+      UserId = #{userid,jdbcType=INTEGER}
+    where DSId = #{dsid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,27 @@
+.container #course_area{
+	width: 100%;
+	min-height: 400px;
+	height: 100%;
+	margin: 15px auto;
+	border:solid;
+	border-width: 1px;
+	border-color: gainsboro;
+}
+
+.container .course_block{
+	width: 300px;
+	height: 200px;
+	float:left;
+	margin: 20px 20px;
+	border: solid;
+	border-width: 1px;
+	border-color: gainsboro;
+	text-align: center;
+}
+
+.container .course_img{
+	width:80%;
+	height: 60%;
+	margin: 5px auto 30px auto;
+	background-color: #90d65b;
+}

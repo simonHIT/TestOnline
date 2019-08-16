@@ -1,0 +1,28 @@
+.selftest_begin{
+	width: 100%;
+	height: 70%;
+	text-align: center;
+	padding: 20px 20px;
+}
+
+.begin_btn{
+	background-color: #4CAF50; /* Green */
+	border-style: none;
+    border-radius: 5px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.begin_btn:hover,
+.begin_btn:active{
+	background-color: #90d65b;
+}
+.courseImg{
+	height: 80%;
+	margin: 20px;
+	background: url(../../static/1.jpg);
+	background-size: 100%;
+}

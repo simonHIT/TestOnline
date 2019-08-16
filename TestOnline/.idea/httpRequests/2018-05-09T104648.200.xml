@@ -1,0 +1,17 @@
+<Result>
+    <status>
+        <code>0</code>
+    </status>
+    <dataList>
+        <dataList>
+            <recordId>1</recordId>
+            <courseId>1</courseId>
+            <deadline/>
+        </dataList>
+        <dataList>
+            <recordId>2</recordId>
+            <courseId>1</courseId>
+            <deadline/>
+        </dataList>
+    </dataList>
+</Result>

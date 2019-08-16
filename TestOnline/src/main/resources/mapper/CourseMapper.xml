@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.testOnline.dao.CourseMapper">
+  <resultMap id="BaseResultMap" type="com.testOnline.model.Course">
+    <id column="course_id" jdbcType="INTEGER" property="courseId" />
+    <result column="course_name" jdbcType="VARCHAR" property="courseName" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="course_tag" jdbcType="VARCHAR" property="courseTag" />
+    <result column="course_img" jdbcType="VARCHAR" property="courseImg" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.testOnline.model.Course">
+    <result column="course_info" jdbcType="LONGVARCHAR" property="courseInfo" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    course_id, course_name, user_id, course_tag, course_img
+  </sql>
+  <sql id="Blob_Column_List">
+    course_info
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.testOnline.model.CourseExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from course
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.testOnline.model.CourseExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from course
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from course
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from course
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.testOnline.model.CourseExample">
+    delete from course
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.testOnline.model.Course">
+    insert into course (course_id, course_name, user_id, 
+      course_tag, course_img, course_info
+      )
+    values (#{courseId,jdbcType=INTEGER}, #{courseName,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{courseTag,jdbcType=VARCHAR}, #{courseImg,jdbcType=VARCHAR}, #{courseInfo,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.testOnline.model.Course">
+    insert into course
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
+        course_id,
+      </if>
+      <if test="courseName != null">
+        course_name,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="courseTag != null">
+        course_tag,
+      </if>
+      <if test="courseImg != null">
+        course_img,
+      </if>
+      <if test="courseInfo != null">
+        course_info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="courseId != null">
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="courseName != null">
+        #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="courseTag != null">
+        #{courseTag,jdbcType=VARCHAR},
+      </if>
+      <if test="courseImg != null">
+        #{courseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="courseInfo != null">
+        #{courseInfo,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.testOnline.model.CourseExample" resultType="java.lang.Long">
+    select count(*) from course
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update course
+    <set>
+      <if test="record.courseId != null">
+        course_id = #{record.courseId,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseName != null">
+        course_name = #{record.courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseTag != null">
+        course_tag = #{record.courseTag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseImg != null">
+        course_img = #{record.courseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseInfo != null">
+        course_info = #{record.courseInfo,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update course
+    set course_id = #{record.courseId,jdbcType=INTEGER},
+      course_name = #{record.courseName,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      course_tag = #{record.courseTag,jdbcType=VARCHAR},
+      course_img = #{record.courseImg,jdbcType=VARCHAR},
+      course_info = #{record.courseInfo,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update course
+    set course_id = #{record.courseId,jdbcType=INTEGER},
+      course_name = #{record.courseName,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      course_tag = #{record.courseTag,jdbcType=VARCHAR},
+      course_img = #{record.courseImg,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.testOnline.model.Course">
+    update course
+    <set>
+      <if test="courseName != null">
+        course_name = #{courseName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="courseTag != null">
+        course_tag = #{courseTag,jdbcType=VARCHAR},
+      </if>
+      <if test="courseImg != null">
+        course_img = #{courseImg,jdbcType=VARCHAR},
+      </if>
+      <if test="courseInfo != null">
+        course_info = #{courseInfo,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.testOnline.model.Course">
+    update course
+    set course_name = #{courseName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      course_tag = #{courseTag,jdbcType=VARCHAR},
+      course_img = #{courseImg,jdbcType=VARCHAR},
+      course_info = #{courseInfo,jdbcType=LONGVARCHAR}
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.testOnline.model.Course">
+    update course
+    set course_name = #{courseName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      course_tag = #{courseTag,jdbcType=VARCHAR},
+      course_img = #{courseImg,jdbcType=VARCHAR}
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </update>
+</mapper>

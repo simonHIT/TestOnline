@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.testOnline.dao.CourseResourcesMapper">
+  <resultMap id="BaseResultMap" type="com.testOnline.model.CourseResources">
+    <id column="resources_id" jdbcType="INTEGER" property="resourcesId" />
+    <result column="courseId" jdbcType="INTEGER" property="courseid" />
+    <result column="resourcesName" jdbcType="VARCHAR" property="resourcesname" />
+    <result column="resources" jdbcType="VARCHAR" property="resources" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    resources_id, courseId, resourcesName, resources
+  </sql>
+  <select id="selectByExample" parameterType="com.testOnline.model.CourseResourcesExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from course_resources
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from course_resources
+    where resources_id = #{resourcesId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from course_resources
+    where resources_id = #{resourcesId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.testOnline.model.CourseResourcesExample">
+    delete from course_resources
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.testOnline.model.CourseResources">
+    insert into course_resources (resources_id, courseId, resourcesName, 
+      resources)
+    values (#{resourcesId,jdbcType=INTEGER}, #{courseid,jdbcType=INTEGER}, #{resourcesname,jdbcType=VARCHAR}, 
+      #{resources,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.testOnline.model.CourseResources">
+    insert into course_resources
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resourcesId != null">
+        resources_id,
+      </if>
+      <if test="courseid != null">
+        courseId,
+      </if>
+      <if test="resourcesname != null">
+        resourcesName,
+      </if>
+      <if test="resources != null">
+        resources,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resourcesId != null">
+        #{resourcesId,jdbcType=INTEGER},
+      </if>
+      <if test="courseid != null">
+        #{courseid,jdbcType=INTEGER},
+      </if>
+      <if test="resourcesname != null">
+        #{resourcesname,jdbcType=VARCHAR},
+      </if>
+      <if test="resources != null">
+        #{resources,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.testOnline.model.CourseResourcesExample" resultType="java.lang.Long">
+    select count(*) from course_resources
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update course_resources
+    <set>
+      <if test="record.resourcesId != null">
+        resources_id = #{record.resourcesId,jdbcType=INTEGER},
+      </if>
+      <if test="record.courseid != null">
+        courseId = #{record.courseid,jdbcType=INTEGER},
+      </if>
+      <if test="record.resourcesname != null">
+        resourcesName = #{record.resourcesname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resources != null">
+        resources = #{record.resources,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update course_resources
+    set resources_id = #{record.resourcesId,jdbcType=INTEGER},
+      courseId = #{record.courseid,jdbcType=INTEGER},
+      resourcesName = #{record.resourcesname,jdbcType=VARCHAR},
+      resources = #{record.resources,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.testOnline.model.CourseResources">
+    update course_resources
+    <set>
+      <if test="courseid != null">
+        courseId = #{courseid,jdbcType=INTEGER},
+      </if>
+      <if test="resourcesname != null">
+        resourcesName = #{resourcesname,jdbcType=VARCHAR},
+      </if>
+      <if test="resources != null">
+        resources = #{resources,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where resources_id = #{resourcesId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.testOnline.model.CourseResources">
+    update course_resources
+    set courseId = #{courseid,jdbcType=INTEGER},
+      resourcesName = #{resourcesname,jdbcType=VARCHAR},
+      resources = #{resources,jdbcType=VARCHAR}
+    where resources_id = #{resourcesId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.SRGMS.dao.DsdetailresultMapper">
+  <resultMap id="BaseResultMap" type="com.SRGMS.model.Dsdetailresult">
+    <id column="DsDetailResultId" jdbcType="INTEGER" property="dsdetailresultid" />
+    <result column="fitId" jdbcType="INTEGER" property="fitid" />
+    <result column="dsDetailId" jdbcType="INTEGER" property="dsdetailid" />
+    <result column="mValue" jdbcType="DOUBLE" property="mvalue" />
+    <result column="wValue" jdbcType="DOUBLE" property="wvalue" />
+    <result column="cValue" jdbcType="DOUBLE" property="cvalue" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    DsDetailResultId, fitId, dsDetailId, mValue, wValue, cValue
+  </sql>
+  <select id="selectByExample" parameterType="com.SRGMS.model.DsdetailresultExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dsdetailresult
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dsdetailresult
+    where DsDetailResultId = #{dsdetailresultid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dsdetailresult
+    where DsDetailResultId = #{dsdetailresultid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.SRGMS.model.DsdetailresultExample">
+    delete from dsdetailresult
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.SRGMS.model.Dsdetailresult">
+    insert into dsdetailresult (DsDetailResultId, fitId, dsDetailId, 
+      mValue, wValue, cValue
+      )
+    values (#{dsdetailresultid,jdbcType=INTEGER}, #{fitid,jdbcType=INTEGER}, #{dsdetailid,jdbcType=INTEGER}, 
+      #{mvalue,jdbcType=DOUBLE}, #{wvalue,jdbcType=DOUBLE}, #{cvalue,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.SRGMS.model.Dsdetailresult">
+    insert into dsdetailresult
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dsdetailresultid != null">
+        DsDetailResultId,
+      </if>
+      <if test="fitid != null">
+        fitId,
+      </if>
+      <if test="dsdetailid != null">
+        dsDetailId,
+      </if>
+      <if test="mvalue != null">
+        mValue,
+      </if>
+      <if test="wvalue != null">
+        wValue,
+      </if>
+      <if test="cvalue != null">
+        cValue,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dsdetailresultid != null">
+        #{dsdetailresultid,jdbcType=INTEGER},
+      </if>
+      <if test="fitid != null">
+        #{fitid,jdbcType=INTEGER},
+      </if>
+      <if test="dsdetailid != null">
+        #{dsdetailid,jdbcType=INTEGER},
+      </if>
+      <if test="mvalue != null">
+        #{mvalue,jdbcType=DOUBLE},
+      </if>
+      <if test="wvalue != null">
+        #{wvalue,jdbcType=DOUBLE},
+      </if>
+      <if test="cvalue != null">
+        #{cvalue,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.SRGMS.model.DsdetailresultExample" resultType="java.lang.Long">
+    select count(*) from dsdetailresult
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update dsdetailresult
+    <set>
+      <if test="record.dsdetailresultid != null">
+        DsDetailResultId = #{record.dsdetailresultid,jdbcType=INTEGER},
+      </if>
+      <if test="record.fitid != null">
+        fitId = #{record.fitid,jdbcType=INTEGER},
+      </if>
+      <if test="record.dsdetailid != null">
+        dsDetailId = #{record.dsdetailid,jdbcType=INTEGER},
+      </if>
+      <if test="record.mvalue != null">
+        mValue = #{record.mvalue,jdbcType=DOUBLE},
+      </if>
+      <if test="record.wvalue != null">
+        wValue = #{record.wvalue,jdbcType=DOUBLE},
+      </if>
+      <if test="record.cvalue != null">
+        cValue = #{record.cvalue,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update dsdetailresult
+    set DsDetailResultId = #{record.dsdetailresultid,jdbcType=INTEGER},
+      fitId = #{record.fitid,jdbcType=INTEGER},
+      dsDetailId = #{record.dsdetailid,jdbcType=INTEGER},
+      mValue = #{record.mvalue,jdbcType=DOUBLE},
+      wValue = #{record.wvalue,jdbcType=DOUBLE},
+      cValue = #{record.cvalue,jdbcType=DOUBLE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.SRGMS.model.Dsdetailresult">
+    update dsdetailresult
+    <set>
+      <if test="fitid != null">
+        fitId = #{fitid,jdbcType=INTEGER},
+      </if>
+      <if test="dsdetailid != null">
+        dsDetailId = #{dsdetailid,jdbcType=INTEGER},
+      </if>
+      <if test="mvalue != null">
+        mValue = #{mvalue,jdbcType=DOUBLE},
+      </if>
+      <if test="wvalue != null">
+        wValue = #{wvalue,jdbcType=DOUBLE},
+      </if>
+      <if test="cvalue != null">
+        cValue = #{cvalue,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where DsDetailResultId = #{dsdetailresultid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.SRGMS.model.Dsdetailresult">
+    update dsdetailresult
+    set fitId = #{fitid,jdbcType=INTEGER},
+      dsDetailId = #{dsdetailid,jdbcType=INTEGER},
+      mValue = #{mvalue,jdbcType=DOUBLE},
+      wValue = #{wvalue,jdbcType=DOUBLE},
+      cValue = #{cvalue,jdbcType=DOUBLE}
+    where DsDetailResultId = #{dsdetailresultid,jdbcType=INTEGER}
+  </update>
+</mapper>

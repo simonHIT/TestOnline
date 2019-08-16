@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="static/css/studentcourse.css">
+		<link rel="stylesheet" href="static/css/common2.css" />
+		<link rel="stylesheet" href="static/layui/css/layui.css" media="all">
+		<script type="text/javascript" src="static/lib/jQuery/3.2.1/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="static/js/common.js" ></script>
+		<script type="text/javascript" src="static/js/StudentForCourse.js"></script>
+		<script type="text/javascript" src="static/lib/layer/layer.js" ></script>
+		<link rel="stylesheet" href="static/layui/css/layui.css" media="all">
+	</head>
+	
+	<body>
+		<div class="container">
+			<!--导航div-->
+			<div class="nav_box">
+				<div class="nav_tit">
+					<p>优学网</p>
+					<div id="person_block">
+						
+						<div class="_userLoged">个人中心</div>
+						<div class="sets" style="display: none;">
+							<ul class="set">
+								<div class="e-hover-arrow"></div>
+								<div class="hover-arrow-border"></div>
+								<li><a id="_myCourse" class="f-fc6 f-fc7" href="#" target="_blank">管理课程</a></li>
+								<li><a id="myCourse" class="f-fc6" href="#" target="_blank">我的课程</a></li>
+								<li><a id="myInfo" class="f-fc6" href="ChangeUserInfo.html" target="_blank">设置</a></li>
+								<li><a class="f-fc6 f-logout" target="_blank" onclick="logout()">退出</a></li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+					
+			</div>
+			<div class="daohang_img">
+				<div class="layui-inline" style="margin: 40px;margin-left: 46%;">
+				  <img id="_userImg" src="static/1.jpg" class="layui-circle" style="width: 80px;height: 80px;">
+				</div>
+				<ul class="userInfos">
+					<li id="_userName" style="text-align: center;"></li>
+				</ul>
+			</div>
+			<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+			  <ul class="layui-tab-title">
+			    <li class="layui-this">我的课程</li>
+			  </ul>
+			</div>
+			<div id="course_area">
+				
+			</div>		
+		</div>
+	</body>
+	
+</html>

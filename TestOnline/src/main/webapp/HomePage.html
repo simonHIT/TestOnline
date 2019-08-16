@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="static/css/init.css"/>
+		<link rel="stylesheet" href="static/css/common2.css" />
+		<link rel="stylesheet" href="static/css/homepage.css" />
+		<script type="text/javascript" src="static/lib/jQuery/3.2.1/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="static/js/HomePage.js" ></script>
+		<script type="text/javascript" src="static/lib/layer/layer.js" ></script>
+		<script type="text/javascript" src="static/js/common.js" ></script>
+		<script type="text/javascript" src="static/layui/layui.js" ></script>
+		<link rel="stylesheet" href="static/layui/css/layui.css" media="all">
+	</head>
+	<body>
+		<div class="container">
+			<!--导航div-->
+			<div class="nav_box">
+				<div class="nav_tit">
+					<p>优学网</p>
+					<div id="person_block">
+						
+						<div class="_userLoged">个人中心</div>
+						<div class="sets" style="display: none;">
+							<ul class="set">
+								<div class="e-hover-arrow"></div>
+								<div class="hover-arrow-border"></div>
+								<li><a id="_myCourse" class="f-fc6 f-fc7" href="#" target="_blank">管理课程</a></li>
+								<li><a id="myCourse" class="f-fc6" href="#" target="_blank">我的课程</a></li>
+								<li><a id="myInfo" class="f-fc6" href="ChangeUserInfo.html" target="_blank">设置</a></li>
+								<li><a class="f-fc6 f-logout" target="_blank" onclick="logout()">退出</a></li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+					
+			</div>
+			<div class="layui-carousel" id="test1" lay-filter="test1">
+			  <div carousel-item="">
+			    <div class="lunbo_img" style="background: url(static/images/319602.jpg);background-repeat: no-repeat;
+			    	background-size: 100% 100%;"></div>
+			    <div class="lunbo_img" style="background: url(static/images/lunbo2.jpg);background-repeat: no-repeat;
+			    	background-size: 100% 100%;"></div>
+			    <div class="lunbo_img" style="background: url(static/images/lunbo7.jpg);background-repeat: no-repeat;
+			    	background-size: 100% 100%;"></div>
+			    <div class="lunbo_img" style="background: url(static/images/lunbo8.jpg);background-repeat: no-repeat;
+			    	background-size: 100% 100%;"></div>
+			    <div class="lunbo_img" style="background: url(static/images/lunbo9.jpg);background-repeat: no-repeat;
+			    	background-size: 100% 100%;"></div>
+			  </div>
+			</div> 
+				
+				<br />
+				
+				<div id="cpu" class="course_type_block">
+					<div>
+						<span class="block_title">计算机</span>
+					</div>
+					
+					<div>
+						<a href="SearchPage.html?type=0" class="typefind">查看全部</a>
+					</div>
+					
+					
+				</div>
+				
+				<div id="wx" class="course_type_block">
+					<div>
+						<span class="block_title">文学</span>
+					</div>
+					<div>
+						<a href="SearchPage.html?type=1" class="typefind">查看全部</a>
+					</div>
+					
+				</div>
+				
+				<div id="hx" class="course_type_block">
+					<div>
+						<span class="block_title">化学</span>
+					</div>
+					<div>
+						<a href="SearchPage.html?type=2" class="typefind">查看全部</a>
+					</div>
+					
+				</div>
+				
+				<div id="wl" class="course_type_block">
+					<div>
+						<span class="block_title">物理</span>
+					</div>
+					<div>
+						<a href="SearchPage.html?type=3" class="typefind">查看全部</a>
+					</div>
+					
+				</div>
+				
+				<div id="sw" class="course_type_block">
+					<div>
+						<span class="block_title">生物</span>
+					</div>
+					<div>
+						<a href="SearchPage.html?type=4" class="typefind">查看全部</a>
+					</div>
+					
+				</div>
+				
+				<div id="sx" class="course_type_block">
+					<div>
+						<span class="block_title">数学</span>
+					</div>
+					<div>
+						<a href="SearchPage.html?type=5" class="typefind">查看全部</a>
+					</div>
+					
+				</div>
+			</div>
+		
+		<script>
+		layui.use(['carousel', 'form'], function() {
+			var carousel = layui.carousel,
+				form = layui.form;
+	
+			//常规轮播
+			carousel.render({
+				elem: '#test1',
+				width: '100%',
+				height: '300px',
+				arrow: 'always'
+			});
+		});
+	</script>
+	</body>
+</html>

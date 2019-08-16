@@ -1,0 +1,20 @@
+<ArrayList>
+    <item>
+        <queId>1</queId>
+        <queTag>1</queTag>
+        <courseId>1</courseId>
+        <queValue>2</queValue>
+        <queRank>1</queRank>
+        <queInfo>11111</queInfo>
+        <queAns>AB</queAns>
+    </item>
+    <item>
+        <queId>2</queId>
+        <queTag>1</queTag>
+        <courseId>1</courseId>
+        <queValue>3</queValue>
+        <queRank>1</queRank>
+        <queInfo>2211</queInfo>
+        <queAns>A</queAns>
+    </item>
+</ArrayList>

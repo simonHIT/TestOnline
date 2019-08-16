@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="static/css/changeuserinfo.css" />
+	<script type="text/javascript" src="static/lib/jquery-1.11.1.min.js" ></script>
+	<script type="text/javascript" src="static/js/common.js" ></script>
+	<script type="text/javascript" src="static/lib/layer/layer.js" ></script>
+	<script type="text/javascript" src="static/js/ChangeUserInfo.js"></script>
+	<!--<script type="text/javascript" src="static/js/common.js"></script>-->
+	<link rel="stylesheet" href="static/layui/css/layui.css" media="all">
+	<script type="text/javascript" src="static/layui/layui.js" ></script>
+	<script type="text/javascript" src="static/js/Valiadate.js"></script>
+</head>
+<body>
+<div class="container">
+	<div class="block_1">
+		<p id="til">修改个人信息</p>
+		<hr />
+		<div class="layui-upload" style="margin-left: 180px;">
+			<div class="layui-upload-list">
+				<img class="layui-upload-img" style="width: 100px;height: 100px;" id="demo1">
+				<p id="demoText"></p>
+			</div>
+			<button type="button" class="layui-btn" id="test1">修改头像</button>
+
+		</div>
+		<div class="line1">
+
+			<input id="username" class="input1" type="text" placeholder="修改用户名" onblur="checkUser()"/>
+			<span style="color: red;" id="user_prompt"></span>
+		</div>
+		<div class="line1">
+			<label class="l1">性别</label>
+			<input class="radio1" type="radio" name="sex" id="radio_man" >男</input>
+			<input class="radio1" type="radio" name="sex" id="radio_woman">女</input>
+		</div>
+		<div class="line1">
+			<label class="l1">密码</label>
+			<input id="password" class="input1" type="text" placeholder="修改密码" onblur="checkPwd()"/>
+			<span style="color: red;" id="pwd_prompt"></span>
+		</div>
+		<div class="line1">
+			<label class="l1">邮箱</label>
+			<input id="mail" class="input1" type="text" placeholder="修改邮箱" onblur="checkEmail()"/>
+			<span style="color: red;" id="email_prompt"></span>
+		</div>
+
+		<div class="line1">
+			<label class="l1">地址</label>
+			<input id="address" class="input1" type="text" placeholder="修改地址" />
+		</div>
+		<div class="line1" id="saveInfo">
+			<button class="btn1">保存</button>
+		</div>
+
+	</div>
+</div>
+<script>
+
+</script>
+</body>
+</html>

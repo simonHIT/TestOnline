@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.SRGMS.dao.DstypeMapper">
+  <resultMap id="BaseResultMap" type="com.SRGMS.model.Dstype">
+    <id column="DSTypeId" jdbcType="INTEGER" property="dstypeid" />
+    <result column="DSTypeName" jdbcType="VARCHAR" property="dstypename" />
+    <result column="TimeUnit" jdbcType="VARCHAR" property="timeunit" />
+    <result column="NumUnit" jdbcType="VARCHAR" property="numunit" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    DSTypeId, DSTypeName, TimeUnit, NumUnit
+  </sql>
+  <select id="selectByExample" parameterType="com.SRGMS.model.DstypeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from DSType
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from DSType
+    where DSTypeId = #{dstypeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from DSType
+    where DSTypeId = #{dstypeid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.SRGMS.model.DstypeExample">
+    delete from DSType
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.SRGMS.model.Dstype">
+    insert into DSType (DSTypeId, DSTypeName, TimeUnit, 
+      NumUnit)
+    values (#{dstypeid,jdbcType=INTEGER}, #{dstypename,jdbcType=VARCHAR}, #{timeunit,jdbcType=VARCHAR}, 
+      #{numunit,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.SRGMS.model.Dstype">
+    insert into DSType
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dstypeid != null">
+        DSTypeId,
+      </if>
+      <if test="dstypename != null">
+        DSTypeName,
+      </if>
+      <if test="timeunit != null">
+        TimeUnit,
+      </if>
+      <if test="numunit != null">
+        NumUnit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dstypeid != null">
+        #{dstypeid,jdbcType=INTEGER},
+      </if>
+      <if test="dstypename != null">
+        #{dstypename,jdbcType=VARCHAR},
+      </if>
+      <if test="timeunit != null">
+        #{timeunit,jdbcType=VARCHAR},
+      </if>
+      <if test="numunit != null">
+        #{numunit,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.SRGMS.model.DstypeExample" resultType="java.lang.Long">
+    select count(*) from DSType
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update DSType
+    <set>
+      <if test="record.dstypeid != null">
+        DSTypeId = #{record.dstypeid,jdbcType=INTEGER},
+      </if>
+      <if test="record.dstypename != null">
+        DSTypeName = #{record.dstypename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.timeunit != null">
+        TimeUnit = #{record.timeunit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.numunit != null">
+        NumUnit = #{record.numunit,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update DSType
+    set DSTypeId = #{record.dstypeid,jdbcType=INTEGER},
+      DSTypeName = #{record.dstypename,jdbcType=VARCHAR},
+      TimeUnit = #{record.timeunit,jdbcType=VARCHAR},
+      NumUnit = #{record.numunit,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.SRGMS.model.Dstype">
+    update DSType
+    <set>
+      <if test="dstypename != null">
+        DSTypeName = #{dstypename,jdbcType=VARCHAR},
+      </if>
+      <if test="timeunit != null">
+        TimeUnit = #{timeunit,jdbcType=VARCHAR},
+      </if>
+      <if test="numunit != null">
+        NumUnit = #{numunit,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DSTypeId = #{dstypeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.SRGMS.model.Dstype">
+    update DSType
+    set DSTypeName = #{dstypename,jdbcType=VARCHAR},
+      TimeUnit = #{timeunit,jdbcType=VARCHAR},
+      NumUnit = #{numunit,jdbcType=VARCHAR}
+    where DSTypeId = #{dstypeid,jdbcType=INTEGER}
+  </update>
+</mapper>

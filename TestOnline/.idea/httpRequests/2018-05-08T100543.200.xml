@@ -1,0 +1,19 @@
+<Result>
+    <status>
+        <code>0</code>
+    </status>
+    <dataList>
+        <dataList>
+            <recordId/>
+            <state>0</state>
+            <userId/>
+            <testPaperId>1</testPaperId>
+        </dataList>
+        <dataList>
+            <recordId/>
+            <state>0</state>
+            <userId/>
+            <testPaperId>2</testPaperId>
+        </dataList>
+    </dataList>
+</Result>

@@ -1,0 +1,25 @@
+<Result>
+    <status>
+        <code>0</code>
+    </status>
+    <dataList>
+        <dataList>
+            <queId>1</queId>
+            <queTag>1</queTag>
+            <courseId>1</courseId>
+            <queValue>2</queValue>
+            <queRank>1</queRank>
+            <queInfo>11111</queInfo>
+            <queAns>AB</queAns>
+        </dataList>
+        <dataList>
+            <queId>2</queId>
+            <queTag>1</queTag>
+            <courseId>1</courseId>
+            <queValue>3</queValue>
+            <queRank>1</queRank>
+            <queInfo>2211</queInfo>
+            <queAns>A</queAns>
+        </dataList>
+    </dataList>
+</Result>

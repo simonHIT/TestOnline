@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="static/css/init.css"/>
+		<link rel="stylesheet" href="static/css/common3.css" />
+		<link rel="stylesheet" href="static/css/addquestion.css" />
+		<script type="text/javascript" src="static/lib/jQuery/3.2.1/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="static/js/AddCourse.js"></script>
+		<script type="text/javascript" src="static/js/common.js" ></script>
+		<script type="text/javascript" src="static/layui/layui.js" ></script>
+		<link rel="stylesheet" href="static/layui/css/layui.css" media="all">
+	</head>
+	<body>
+		<div class="container">
+			<!--导航div-->
+			<div class="nav_box">
+				<div class="nav_tit">
+					<p>优学网</p>
+					<div id="person_block">
+						
+						<div class="_userLoged">个人中心</div>
+						<div class="sets" style="display: none;">
+							<ul class="set">
+								<div class="e-hover-arrow"></div>
+								<div class="hover-arrow-border"></div>
+								<li><a id="_myCourse" class="f-fc6 f-fc7" href="#" target="_blank">管理课程</a></li>
+								<li><a id="myCourse" class="f-fc6" href="#" target="_blank">我的课程</a></li>
+								<li><a id="myInfo" class="f-fc6" href="ChangeUserInfo.html" target="_blank">设置</a></li>
+								<li><a class="f-fc6 f-logout" target="_blank" onclick="logout()">退出</a></li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+					
+			</div>
+			
+			<div id="course_nav">
+				<!--
+                	模拟垂直分割线
+                -->
+				<div style="width:19%;border-right:1px solid darkgray;float:left;height:100%;"></div>
+				<label style="position: absolute;left: 210px;">课程名称</label>
+			</div>
+			
+			
+			<div id="course">
+				<!--
+					左侧导航列表部分
+                -->
+				<div class="option_list">
+					<ul>
+						<li style="width: 100%;height: 120px;">
+							<div style="height:80%;margin: 20px;background-color: #90d65b;"></div>
+						</li>
+						<li class="li_block">
+							<a href="TeacherCourse.html">我的课程</a>
+						</li>
+						
+						
+					</ul>
+				</div>
+				
+				
+				<!--
+					右侧内容部分
+                -->
+				<div class="info_nav">
+					<div class="text_area">
+						<p style="font-size: 26px;">添加课程</p>
+					</div>
+						<hr class="hr_line">
+						
+					<div class="add_choiceque_area">
+						<form>
+						<label style="margin: 40px 25px;">课程信息</label>
+						
+						<div class="line1">
+							<label class="label1" style="width: 80px;">课程名称</label>
+							<input class="input_info" id="courseName" type="text"/>
+						</div>
+						
+						<div class="line1">
+							<label class="label1" style="width: 80px;">课程类型</label>
+							<select id="courseTag" class="input_info">
+								<option value="计算机">计算机</option>
+								<option value="数学">数学</option>
+								<option value="文学">文学</option>
+								<option value="化学">化学</option>
+								<option value="物理">物理学</option>
+								<option value="生物">生物学</option>
+							</select>
+						
+						</div>
+						
+						<div class="line1">
+							<label class="label1" style="width: 80px;">课程信息</label>
+							<br />
+							<textarea id="courseInfo" style="height: 100px;width: 60%; margin-left: 120px;border-color: #CCC;"></textarea>
+						</div>
+						<div class="layui-upload" style="margin-left: 180px;">
+							<div class="layui-upload-list">
+								<img class="layui-upload-img" style="width: 100px;height: 100px;" id="demo1">
+								<p id="demoText"></p>
+							</div>
+							<button type="button" class="layui-btn" id="test1">修改头像</button>
+						</div>
+						</div>
+						</form>
+						<div class="line1" id="addC">
+							<button class="submit_btn">提交</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			
+</script>
+	</body>
+</html>

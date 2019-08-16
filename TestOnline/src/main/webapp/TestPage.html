@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="static/css/init.css"/>
+		<link rel="stylesheet" href="static/css/common3.css" />
+		<link rel="stylesheet" href="static/css/test.css" />
+		<script type="text/javascript" src="static/lib/jQuery/3.2.1/jquery-3.2.1.js" ></script>
+		<script type="text/javascript" src="static/js/common.js" ></script>
+		<script type="text/javascript" src="static/js/TestPage.js"></script>
+		<script type="text/javascript" src="static/lib/layer/layer.js" ></script>
+		<script type="text/javascript" src="static/js/common.js" ></script>
+		<script type="text/javascript" src="static/wangEditor-3.1.1/release/wangEditor.min.js" ></script>
+	</head>
+	<body>
+		<div class="container">
+			<!--导航div-->
+			<div class="nav_box">
+				<div class="nav_tit">
+					<p>优学网</p>
+					<div id="person_block">
+						
+						<div class="_userLoged">个人中心</div>
+						<div class="sets" style="display: none;">
+							<ul class="set">
+								<div class="e-hover-arrow"></div>
+								<div class="hover-arrow-border"></div>
+								<li><a id="_myCourse" class="f-fc6 f-fc7" href="#" target="_blank">管理课程</a></li>
+								<li><a id="myCourse" class="f-fc6" href="#" target="_blank">我的课程</a></li>
+								<li><a id="myInfo" class="f-fc6" href="ChangeUserInfo.html" target="_blank">设置</a></li>
+								<li><a class="f-fc6 f-logout" target="_blank" onclick="logout()">退出</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+					
+			</div>
+			
+			<div id="course_nav">
+				<!--
+                	模拟垂直分割线
+                -->
+				<div style="width:19%;border-right:1px solid darkgray;float:left;height:100%;"></div>
+				<label style="position: absolute;left: 210px;">课程名称</label>
+			</div>
+			
+			
+			<div id="test_area">
+				<div id="test_name">
+					<label>测试</label>
+					
+				</div>
+				
+				<hr class="hr_line">
+				<form>
+				<!--<div class="choice_question_area" data-id = "">
+					<div class="f-text"><p>1.在含盐10%的的盐水中，再加入5g盐和5g水。现在比例是（）</p></div>
+					<ul>
+							<li><input class="rad_button f-rado" type="radio" name="choice"/><div class="f-op"><p>A. 1:10 </p></div></li>
+							<li><input class="rad_button f-rado" type="radio" name="choice"/><div class="f-op">B. 2:9</div></li>
+							<li><input class="rad_button f-rado" type="radio" name="choice"/><div class="f-op">C: 3:8</div></li>
+							<li><input class="rad_button f-rado" type="radio" name="choice"/><div class="f-op">D: 1:1</div></li>
+					</ul>
+					<div class="real-ans"><span>正确答案：AB</span></div>
+				</div >-->
+				
+				<!--<hr class="hr_line">-->
+				
+				<!--<div class="answer_question_area" data-id ="">
+					<p>2.在含盐10%的的盐水中，再加入5g盐和5g水。现在比例是（）</p>
+					<div id="answer_area"></div>
+				</div>-->
+				</form>
+					<div class="timeBox">
+						倒计时
+					<span id="timeTxt">2:00:00</span>
+					</div>
+				
+			</div>
+			
+			
+			<!--<div id="right_block">
+				
+			</div>-->
+		</div>
+		<script>
+		
+		</script>
+	</body>
+</html>
